@@ -7,30 +7,28 @@
 <meta name="description" content="Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.">
 <meta property="og:title" content="Que Comemos Hoy">
 <meta property="og:description" content="Planificá las cenas de tu familia con IA, sin repetirte.">
-<meta property="og:url" content="https://quecomemoshoy.app">
+<meta property="og:url" content="https://qch.com.ar">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://quecomemoshoy.app">
+<link rel="canonical" href="https://qch.com.ar">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --cream:      #FAF6F0;
-  --warm-white: #FFFDF9;
-  --terracotta: #C8553D;
-  --terra-dark: #A33D28;
-  --terra-light:#F2E8E5;
-  --olive:      #5C6B3A;
-  --olive-light:#EBF0E0;
-  --ink:        #1C1812;
-  --muted:      #8C7B6B;
-  --border:     #E8DDD0;
+  --cream:        #FAF6F0;
+  --warm-white:   #FFFDF9;
+  --terracotta:   #C8553D;
+  --terra-dark:   #A33D28;
+  --terra-light:  #F2E8E5;
+  --olive:        #5C6B3A;
+  --olive-light:  #EBF0E0;
+  --ink:          #1C1812;
+  --muted:        #8C7B6B;
+  --border:       #E8DDD0;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--cream);
@@ -46,11 +44,13 @@ body {
   z-index: 200;
   display: flex;
   gap: 6px;
-  background: rgba(255,253,249,0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(255,253,249,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 4px 6px;
+  box-shadow: 0 2px 12px rgba(28,24,18,0.08);
 }
 .lang-btn {
   background: none;
@@ -82,8 +82,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
-/* Fondo decorativo: círculos suaves */
 .hero::before {
   content: '';
   position: absolute;
@@ -106,6 +104,7 @@ body {
 .hero-emoji {
   font-size: 72px;
   margin-bottom: 24px;
+  display: block;
   animation: float 3s ease-in-out infinite;
 }
 @keyframes float {
@@ -121,10 +120,7 @@ body {
   margin-bottom: 20px;
   letter-spacing: -1px;
 }
-.hero-title em {
-  color: var(--terracotta);
-  font-style: italic;
-}
+.hero-title em { color: var(--terracotta); font-style: italic; }
 
 .hero-subtitle {
   font-size: clamp(17px, 2.5vw, 20px);
@@ -190,6 +186,27 @@ body {
   50%       { transform: rotate(45deg) translateY(5px); }
 }
 
+/* ── SOCIAL PROOF STRIP ──────────────────────────────── */
+.social-strip {
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.social-item strong { color: var(--ink); }
+
 /* ── SECTION COMMON ──────────────────────────────────── */
 section {
   padding: 80px 24px;
@@ -223,7 +240,7 @@ section {
 .how-section { text-align: center; }
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 32px;
   margin-top: 48px;
 }
@@ -258,15 +275,22 @@ section {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-.step-title {
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--ink);
-}
-.step-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
+.step-title { font-weight: 600; font-size: 16px; color: var(--ink); }
+.step-desc  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* Connector line between steps (desktop) */
+@media (min-width: 700px) {
+  .steps { position: relative; }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(10% + 36px);
+    right: calc(10% + 36px);
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 6px, transparent 6px, transparent 12px);
+    pointer-events: none;
+  }
 }
 
 /* ── SCREENSHOTS ─────────────────────────────────────── */
@@ -294,6 +318,8 @@ section {
   scrollbar-width: none;
 }
 .screenshots-scroll::-webkit-scrollbar { display: none; }
+
+/* Phone mock: placeholder SVG mientras no hay capturas reales */
 .phone-mock {
   flex: 0 0 200px;
   scroll-snap-align: start;
@@ -304,24 +330,56 @@ section {
     0 0 0 10px #3A3530,
     0 20px 60px rgba(28,24,18,0.25);
   transition: transform 0.3s;
+  background: #1C1812;
+  aspect-ratio: 9/18;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 .phone-mock:hover { transform: translateY(-8px) scale(1.02); }
 .phone-mock img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+/* Placeholder cuando no hay imagen */
+.phone-screen-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(160deg, #2A2218 0%, #1C1812 100%);
+  padding: 24px;
+  text-align: center;
+}
+.phone-screen-placeholder .ph-icon { font-size: 36px; }
+.phone-screen-placeholder .ph-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.4;
+}
+.phone-screen-placeholder .ph-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Sans', sans-serif;
 }
 
 @media (min-width: 700px) {
   .phone-mock { flex: 0 0 220px; }
 }
 
-/* ── SCREENSHOTS ─────────────────────────────────────── */
+/* ── FEATURES STRIP ──────────────────────────────────── */
 .features-strip {
   background: var(--ink);
   color: white;
   padding: 60px 24px;
-  overflow: hidden;
 }
 .features-strip-inner {
   max-width: 900px;
@@ -330,14 +388,10 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 32px;
 }
-.feat {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.feat { display: flex; flex-direction: column; gap: 10px; }
 .feat-icon { font-size: 28px; }
 .feat-title { font-weight: 600; font-size: 15px; }
-.feat-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.feat-desc  { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
 /* ── PRICING ─────────────────────────────────────────── */
 .pricing-section { text-align: center; }
@@ -396,11 +450,7 @@ section {
   line-height: 1;
   margin-bottom: 4px;
 }
-.plan-period {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
+.plan-period { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
 .plan-features {
   list-style: none;
   display: flex;
@@ -472,7 +522,15 @@ section {
 }
 .cta-section .section-title { color: white; }
 .cta-section .section-title em { color: rgba(255,255,255,0.7); }
-.cta-desc { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto; }
+.cta-desc {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .btn-cta {
   display: inline-flex;
   align-items: center;
@@ -503,7 +561,7 @@ footer {
 }
 footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
 footer a:hover { color: white; }
-footer .footer-logo {
+.footer-logo {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
   color: rgba(255,255,255,0.7);
@@ -524,19 +582,18 @@ footer .footer-logo {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-emoji, .hero-title, .hero-subtitle, .btn-hero, .hero-note {
-  animation: fadeInUp 0.7s ease both;
-}
-.hero-title    { animation-delay: 0.1s; }
-.hero-subtitle { animation-delay: 0.2s; }
-.btn-hero      { animation-delay: 0.3s; }
-.hero-note     { animation-delay: 0.4s; }
+.hero-emoji    { animation: fadeInUp 0.7s ease both; }
+.hero-title    { animation: fadeInUp 0.7s 0.1s ease both; }
+.hero-subtitle { animation: fadeInUp 0.7s 0.2s ease both; }
+.btn-hero      { animation: fadeInUp 0.7s 0.3s ease both; }
+.hero-note     { animation: fadeInUp 0.7s 0.4s ease both; }
 
 /* ── MOBILE ──────────────────────────────────────────── */
 @media (max-width: 600px) {
   section { padding: 60px 20px; }
   .plans { grid-template-columns: 1fr; max-width: 360px; }
   .features-strip-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .social-strip { gap: 16px; }
 }
 </style>
 </head>
@@ -550,10 +607,10 @@ footer .footer-logo {
 
 <!-- ══ HERO ══════════════════════════════════════════════ -->
 <div class="hero">
-  <div class="hero-emoji">🍽️</div>
+  <span class="hero-emoji">🍽️</span>
   <h1 class="hero-title" data-i18n="heroTitle">Que Comemos<br><em>Hoy</em></h1>
   <p class="hero-subtitle" data-i18n="heroSubtitle">Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.</p>
-  <a href="https://qch-pwa.pages.dev" class="btn-hero" data-i18n-href="appUrl">
+  <a href="https://app.qch.com.ar" class="btn-hero">
     <span data-i18n="heroCta">📲 Instalar gratis</span>
   </a>
   <p class="hero-note" data-i18n="heroNote">Sin descargas. Funciona en tu celular como app. <strong>Gratis para empezar.</strong></p>
@@ -562,12 +619,20 @@ footer .footer-logo {
   </div>
 </div>
 
+<!-- ══ SOCIAL PROOF ═══════════════════════════════════════ -->
+<div class="social-strip">
+  <div class="social-item">📱 <span data-i18n="proofPwa"><strong>PWA instalable</strong> · sin App Store</span></div>
+  <div class="social-item">🇦🇷 <span data-i18n="proofAr"><strong>Hecho en Argentina</strong></span></div>
+  <div class="social-item">✨ <span data-i18n="proofAi"><strong>Powered by Claude AI</strong></span></div>
+  <div class="social-item">🔓 <span data-i18n="proofFree"><strong>7 cenas gratis</strong> para empezar</span></div>
+</div>
+
 <!-- ══ HOW IT WORKS ══════════════════════════════════════ -->
 <section class="how-section">
   <div class="section-label" data-i18n="howLabel">Cómo funciona</div>
   <h2 class="section-title" data-i18n="howTitle">Del caos al menú<br><em>en 2 minutos</em></h2>
   <div class="divider"></div>
-  <p class="section-desc" style="margin: 0 auto" data-i18n="howDesc">Sin pensar qué cocinar, sin repetir la semana anterior, sin olvidar las restricciones de cada uno.</p>
+  <p class="section-desc" style="margin:0 auto" data-i18n="howDesc">Sin pensar qué cocinar, sin repetir la semana anterior, sin olvidar las restricciones de cada uno.</p>
   <div class="steps">
     <div class="step">
       <div class="step-icon">👨‍👩‍👧‍👦</div>
@@ -579,7 +644,7 @@ footer .footer-logo {
       <div class="step-icon">✨</div>
       <div class="step-num" data-i18n="step2num">Paso 2</div>
       <div class="step-title" data-i18n="step2title">La IA sugiere cenas</div>
-      <div class="step-desc" data-i18n="step2desc">Recibe sugerencias personalizadas para la semana, con ingredientes e instrucciones.</div>
+      <div class="step-desc" data-i18n="step2desc">Recibís sugerencias personalizadas para la semana, con ingredientes e instrucciones paso a paso.</div>
     </div>
     <div class="step">
       <div class="step-icon">✅</div>
@@ -605,35 +670,36 @@ footer .footer-logo {
       <div class="divider" style="margin:20px 0"></div>
       <p class="section-desc" data-i18n="screensDesc">Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.</p>
     </div>
-    <div class="screenshots-scroll">
-      <div class="phone-mock">
-        <img src="screen-home.jpg" alt="Pantalla principal con perfiles de familia">
+    <div class="screenshots-scroll" id="screenshots-scroll">
+      <!-- Las capturas reales se cargan si existen, si no se muestran placeholders -->
+      <div class="phone-mock" id="mock-home">
+        <img src="screen-home.jpg" alt="Pantalla principal" onerror="this.parentNode.innerHTML=phonePlaceholder('🏠','screen-home.jpg','Pantalla principal')">
       </div>
-      <div class="phone-mock">
-        <img src="screen-sugerencias.jpg" alt="Sugerencias de cenas con swipe">
+      <div class="phone-mock" id="mock-sugerencias">
+        <img src="screen-sugerencias.jpg" alt="Sugerencias de cenas" onerror="this.parentNode.innerHTML=phonePlaceholder('✨','screen-sugerencias.jpg','Sugerencias IA')">
       </div>
-      <div class="phone-mock">
-        <img src="screen-detalle.jpg" alt="Detalle de receta con ingredientes e instrucciones">
+      <div class="phone-mock" id="mock-detalle">
+        <img src="screen-detalle.jpg" alt="Detalle de receta" onerror="this.parentNode.innerHTML=phonePlaceholder('📋','screen-detalle.jpg','Detalle de receta')">
       </div>
-      <div class="phone-mock">
-        <img src="screen-compras.jpg" alt="Lista de compras agrupada por categoría">
+      <div class="phone-mock" id="mock-compras">
+        <img src="screen-compras.jpg" alt="Lista de compras" onerror="this.parentNode.innerHTML=phonePlaceholder('🛒','screen-compras.jpg','Lista de compras')">
       </div>
     </div>
   </div>
 </div>
 
-
+<!-- ══ FEATURES STRIP ════════════════════════════════════ -->
 <div class="features-strip">
   <div class="features-strip-inner">
     <div class="feat">
       <div class="feat-icon">📱</div>
       <div class="feat-title" data-i18n="feat1title">PWA instalable</div>
-      <div class="feat-desc" data-i18n="feat1desc">Se instala desde el browser, sin ir al App Store. Funciona offline.</div>
+      <div class="feat-desc" data-i18n="feat1desc">Se instala desde el browser, sin App Store. Funciona offline.</div>
     </div>
     <div class="feat">
       <div class="feat-icon">🔒</div>
-      <div class="feat-title" data-i18n="feat2title">Tus datos, en tu Drive</div>
-      <div class="feat-desc" data-i18n="feat2desc">Todo se guarda en tu propia planilla de Google Sheets. Vos tenés el control.</div>
+      <div class="feat-title" data-i18n="feat2title">Datos seguros</div>
+      <div class="feat-desc" data-i18n="feat2desc">Tu información se guarda en nuestra base de datos segura. Solo vos podés verla.</div>
     </div>
     <div class="feat">
       <div class="feat-icon">♻️</div>
@@ -658,92 +724,105 @@ footer .footer-logo {
     <!-- FREE -->
     <div class="plan-card">
       <div class="plan-name" data-i18n="plan1name">Gratis</div>
-      <div class="plan-price" data-i18n="plan1price">$0<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif">/mes</span></div>
+      <div class="plan-price">$0<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif">/mes</span></div>
       <div class="plan-period" data-i18n="plan1period">Para siempre</div>
       <ul class="plan-features">
-        <li data-i18n="plan1f1">1 planificación por mes</li>
+        <li data-i18n="plan1f1">7 cenas por mes</li>
         <li data-i18n="plan1f2">Lista de compras incluida</li>
         <li data-i18n="plan1f3">Historial de semanas</li>
-        <li class="muted" data-i18n="plan1f4">Planificaciones ilimitadas</li>
+        <li class="muted" data-i18n="plan1f4">Cenas ilimitadas</li>
         <li class="muted" data-i18n="plan1f5">Banco de recetas ilimitado</li>
       </ul>
-      <a href="https://qch-pwa.pages.dev" class="btn-plan btn-plan-secondary" data-i18n="plan1cta">Empezar gratis</a>
+      <a href="https://app.qch.com.ar" class="btn-plan btn-plan-secondary" data-i18n="plan1cta">Empezar gratis</a>
     </div>
 
     <!-- FAMILIAR -->
     <div class="plan-card featured">
       <div class="plan-badge" data-i18n="featuredBadge">Más popular</div>
       <div class="plan-name" data-i18n="plan2name">Familiar</div>
-      <div class="plan-price" data-i18n="plan2price">4.99 <span style="font-size:16px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif">U$S/mes</span></div>
+      <div class="plan-price">$4.99<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif"> USD/mes</span></div>
       <div class="plan-period" data-i18n="plan2period">Cancelá cuando quieras</div>
       <ul class="plan-features">
-        <li data-i18n="plan2f1">Planificaciones ilimitadas</li>
+        <li data-i18n="plan2f1">Cenas ilimitadas</li>
         <li data-i18n="plan2f2">Lista de compras incluida</li>
         <li data-i18n="plan2f3">Historial completo</li>
         <li data-i18n="plan2f4">Banco de recetas ilimitado</li>
-        <li data-i18n="plan2f5">Soporte prioritario</li>
+        <li data-i18n="plan2f5">Recordatorios semanales</li>
       </ul>
-      <a href="https://qch-pwa.pages.dev" class="btn-plan btn-plan-primary" data-i18n="plan2cta">Empezar ahora →</a>
+      <a href="https://app.qch.com.ar" class="btn-plan btn-plan-primary" data-i18n="plan2cta">Empezar ahora →</a>
     </div>
   </div>
 </section>
 
 <!-- ══ FINAL CTA ══════════════════════════════════════════ -->
 <div class="cta-section">
-  <section style="padding: 0; max-width: 640px;">
+  <section style="padding:0;max-width:640px">
     <h2 class="section-title" data-i18n="ctaTitle">¿Qué cenamos<br><em>esta semana?</em></h2>
     <p class="cta-desc" data-i18n="ctaDesc">Instalá la app en tu celular en 30 segundos. Sin tarjeta de crédito para empezar.</p>
-    <a href="https://qch-pwa.pages.dev" class="btn-cta" data-i18n="ctaBtn">📲 Instalar gratis</a>
+    <a href="https://app.qch.com.ar" class="btn-cta" data-i18n="ctaBtn">📲 Instalar gratis</a>
   </section>
 </div>
 
 <!-- ══ FOOTER ═════════════════════════════════════════════ -->
 <footer>
   <div class="footer-logo">Que Comemos Hoy</div>
-  <div data-i18n="footerCopy">© 2025 quecomemoshoy.app · Hecho con ❤️ en Argentina</div>
+  <div data-i18n="footerCopy">© 2026 qch.com.ar · Hecho con ❤️ en Argentina</div>
   <div>
-    <a href="https://qch-pwa.pages.dev" data-i18n="footerApp">Abrir la app</a>
+    <a href="https://app.qch.com.ar" data-i18n="footerApp">Abrir la app</a>
     &nbsp;·&nbsp;
-    <a href="mailto:hola@quecomemoshoy.app">Contacto</a>
+    <a href="mailto:hola@qch.com.ar">Contacto</a>
   </div>
 </footer>
 
 <script>
+// Placeholder para cuando no hay capturas reales
+function phonePlaceholder(icon, filename, label) {
+  return '<div class="phone-screen-placeholder">'
+    + '<div class="ph-icon">' + icon + '</div>'
+    + '<div class="ph-title">' + label + '</div>'
+    + '<div class="ph-label">Captura próximamente</div>'
+    + '</div>';
+}
+
+var APP_URL = 'https://app.qch.com.ar';
+
 var LANG = {
   es: {
     heroTitle:    'Que Comemos<br><em>Hoy</em>',
     heroSubtitle: 'Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.',
     heroCta:      '📲 Instalar gratis',
     heroNote:     'Sin descargas. Funciona en tu celular como una app. <strong>Gratis para empezar.</strong>',
-    screensLabel: 'La app, en tu celular',
-    screensTitle: 'Todo lo que necesitás<br><em>en una pantalla</em>',
-    screensDesc:  'Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.',
+    proofPwa:     '<strong>PWA instalable</strong> · sin App Store',
+    proofAr:      '<strong>Hecho en Argentina</strong>',
+    proofAi:      '<strong>Powered by Claude AI</strong>',
+    proofFree:    '<strong>7 cenas gratis</strong> para empezar',
     howLabel:     'Cómo funciona',
     howTitle:     'Del caos al menú<br><em>en 2 minutos</em>',
     howDesc:      'Sin pensar qué cocinar, sin repetir la semana anterior, sin olvidar las restricciones de cada uno.',
     step1num:'Paso 1', step1title:'Cargá tu familia',      step1desc:'Integrantes, edades, dietas y restricciones. Una sola vez.',
-    step2num:'Paso 2', step2title:'La IA sugiere cenas',   step2desc:'Sugerencias personalizadas para la semana, con ingredientes e instrucciones.',
+    step2num:'Paso 2', step2title:'La IA sugiere cenas',   step2desc:'Sugerencias personalizadas para la semana, con ingredientes e instrucciones paso a paso.',
     step3num:'Paso 3', step3title:'Elegís lo que querés',  step3desc:'Deslizá para descartar, confirmá las que te gustan. Vos mandás.',
     step4num:'Paso 4', step4title:'Lista de compras lista',step4desc:'Ingredientes agrupados por categoría, listos para el súper.',
-    feat1title:'PWA instalable',         feat1desc:'Se instala desde el browser, sin App Store. Funciona offline.',
-    feat2title:'Tus datos, en tu Drive', feat2desc:'Todo se guarda en tu propia planilla de Google Sheets. Vos tenés el control.',
-    feat3title:'Historial inteligente',  feat3desc:'Recuerda las semanas anteriores para no repetir los mismos platos.',
-    feat4title:'Banco de recetas',       feat4desc:'Cargá tus recetas favoritas y la IA las va a priorizar cada semana.',
+    screensLabel: 'La app, en tu celular',
+    screensTitle: 'Todo lo que necesitás<br><em>en una pantalla</em>',
+    screensDesc:  'Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.',
+    feat1title:'PWA instalable',   feat1desc:'Se instala desde el browser, sin App Store. Funciona offline.',
+    feat2title:'Datos seguros',    feat2desc:'Tu información se guarda en nuestra base de datos segura. Solo vos podés verla.',
+    feat3title:'Historial inteligente', feat3desc:'Recuerda las semanas anteriores para no repetir los mismos platos.',
+    feat4title:'Banco de recetas', feat4desc:'Cargá tus recetas favoritas y la IA las va a priorizar cada semana.',
     pricingLabel:'Planes',
     pricingTitle:'Simple y <em>transparente</em>',
     plan1name:'Gratis',   plan1period:'Para siempre',
-    plan1price:'$0 <span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif">/mes</span>',
-    plan1f1:'1 planificación por mes', plan1f2:'Lista de compras incluida', plan1f3:'Historial de semanas',
-    plan1f4:'Planificaciones ilimitadas', plan1f5:'Banco de recetas ilimitado', plan1cta:'Empezar gratis',
+    plan1f1:'7 cenas por mes', plan1f2:'Lista de compras incluida', plan1f3:'Historial de semanas',
+    plan1f4:'Cenas ilimitadas', plan1f5:'Banco de recetas ilimitado', plan1cta:'Empezar gratis',
     featuredBadge:'Más popular',
     plan2name:'Familiar', plan2period:'Cancelá cuando quieras',
-    plan2price:'4.99 <span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif">U$S/mes</span>',
-    plan2f1:'Planificaciones ilimitadas', plan2f2:'Lista de compras incluida', plan2f3:'Historial completo',
-    plan2f4:'Banco de recetas ilimitado', plan2f5:'Soporte prioritario', plan2cta:'Empezar ahora →',
+    plan2f1:'Cenas ilimitadas', plan2f2:'Lista de compras incluida', plan2f3:'Historial completo',
+    plan2f4:'Banco de recetas ilimitado', plan2f5:'Recordatorios semanales', plan2cta:'Empezar ahora →',
     ctaTitle:'¿Qué cenamos<br><em>esta semana?</em>',
     ctaDesc:'Instalá la app en tu celular en 30 segundos. Sin tarjeta de crédito para empezar.',
     ctaBtn:'📲 Instalar gratis',
-    footerCopy:'© 2025 quecomemoshoy.app · Hecho con ❤️ en Argentina',
+    footerCopy:'© 2026 qch.com.ar · Hecho con ❤️ en Argentina',
     footerApp:'Abrir la app',
   },
   en: {
@@ -751,35 +830,37 @@ var LANG = {
     heroSubtitle: "Plan your family's dinners for the whole week in seconds. Powered by AI, never repeating.",
     heroCta:      '📲 Install for free',
     heroNote:     'No downloads needed. Works on your phone like an app. <strong>Free to start.</strong>',
-    screensLabel: 'The app, on your phone',
-    screensTitle: 'Everything you need<br><em>on one screen</em>',
-    screensDesc:  'From family profiles to a ready-to-use shopping list. No extra steps.',
+    proofPwa:     '<strong>Installable PWA</strong> · no App Store',
+    proofAr:      '<strong>Made in Argentina</strong>',
+    proofAi:      '<strong>Powered by Claude AI</strong>',
+    proofFree:    '<strong>7 free dinners</strong> to start',
     howLabel:     'How it works',
     howTitle:     'From chaos to menu<br><em>in 2 minutes</em>',
     howDesc:      'No more "what do we eat tonight?". No repeats. No forgotten dietary restrictions.',
-    step1num:'Step 1', step1title:'Set up your family',  step1desc:'Add members, ages, diets and restrictions. Just once.',
+    step1num:'Step 1', step1title:'Set up your family', step1desc:'Add members, ages, diets and restrictions. Just once.',
     step2num:'Step 2', step2title:'AI suggests dinners', step2desc:'Personalized weekly suggestions with ingredients and step-by-step instructions.',
     step3num:'Step 3', step3title:'Pick what you like',  step3desc:"Swipe to dismiss, confirm the ones you want. You're in control.",
     step4num:'Step 4', step4title:'Shopping list ready', step4desc:'Ingredients grouped by category, ready for the grocery store.',
-    feat1title:'Installable PWA',       feat1desc:'Install from your browser, no App Store needed. Works offline.',
-    feat2title:'Your data, your Drive', feat2desc:'Everything is saved in your own Google Sheet. You own your data.',
-    feat3title:'Smart history',         feat3desc:'Remembers previous weeks so you never repeat the same meals.',
-    feat4title:'Recipe bank',           feat4desc:'Add your favorite recipes and AI will prioritize them every week.',
+    screensLabel: 'The app, on your phone',
+    screensTitle: 'Everything you need<br><em>on one screen</em>',
+    screensDesc:  'From family profiles to a ready-to-use shopping list. No extra steps.',
+    feat1title:'Installable PWA',    feat1desc:'Install from your browser, no App Store needed. Works offline.',
+    feat2title:'Your data is safe',  feat2desc:'Your information is stored in our secure database. Only you can see it.',
+    feat3title:'Smart history',      feat3desc:'Remembers previous weeks so you never repeat the same meals.',
+    feat4title:'Recipe bank',        feat4desc:'Add your favorite recipes and AI will prioritize them every week.',
     pricingLabel:'Pricing',
     pricingTitle:'Simple and <em>transparent</em>',
     plan1name:'Free',   plan1period:'Forever',
-    plan1price:'$0 <span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif">/mo</span>',
-    plan1f1:'1 planning per month', plan1f2:'Shopping list included', plan1f3:'Weeks history',
-    plan1f4:'Unlimited plannings',  plan1f5:'Unlimited recipe bank',  plan1cta:'Start for free',
+    plan1f1:'7 dinners per month', plan1f2:'Shopping list included', plan1f3:'Weeks history',
+    plan1f4:'Unlimited dinners',   plan1f5:'Unlimited recipe bank',  plan1cta:'Start for free',
     featuredBadge:'Most popular',
     plan2name:'Family', plan2period:'Cancel anytime',
-    plan2price:'$4.99 <span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif">/mo</span>',
-    plan2f1:'Unlimited plannings', plan2f2:'Shopping list included', plan2f3:'Full history',
-    plan2f4:'Unlimited recipe bank', plan2f5:'Priority support', plan2cta:'Get started →',
+    plan2f1:'Unlimited dinners', plan2f2:'Shopping list included', plan2f3:'Full history',
+    plan2f4:'Unlimited recipe bank', plan2f5:'Weekly reminders', plan2cta:'Get started →',
     ctaTitle:"What's for dinner<br><em>this week?</em>",
     ctaDesc:'Install the app on your phone in 30 seconds. No credit card required to start.',
     ctaBtn:'📲 Install for free',
-    footerCopy:'© 2025 quecomemoshoy.app · Made with ❤️ in Argentina',
+    footerCopy:'© 2026 qch.com.ar · Made with ❤️ in Argentina',
     footerApp:'Open the app',
   }
 };
@@ -796,12 +877,13 @@ function setLang(lang) {
   localStorage.setItem('qch_landing_lang', lang);
 }
 
+// Intersection observer para animaciones de steps
 var observer = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.step').forEach(function(el) { observer.observe(el); });
 
-// Inicializar idioma
+// Init
 setLang(localStorage.getItem('qch_landing_lang') || 'es');
 </script>
 </body>
