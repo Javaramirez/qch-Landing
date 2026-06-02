@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Privacidad — Que Comemos Hoy</title>
+<meta name="description" content="Términos de servicio y política de privacidad de Que Comemos Hoy (QCH).">
+<link rel="canonical" href="https://qch-pwa.pages.dev/legal">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream:       #FAF6F0;
+  --warm-white:  #FFFDF9;
+  --terracotta:  #C8553D;
+  --terra-dark:  #A33D28;
+  --terra-light: #F2E8E5;
+  --olive:       #5C6B3A;
+  --olive-light: #EBF0E0;
+  --ink:         #1C1812;
+  --muted:       #8C7B6B;
+  --border:      #E8DDD0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ── Lang bar ── */
+.lang-bar {
+  position: fixed;
+  top: 16px; right: 20px;
+  z-index: 200;
+  display: flex;
+  gap: 6px;
+  background: rgba(255,253,249,0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 6px;
+  box-shadow: 0 2px 12px rgba(28,24,18,0.08);
+}
+.lang-btn {
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 14px;
+  transition: all 0.2s;
+}
+.lang-btn.active {
+  background: var(--terracotta);
+  color: white;
+  font-weight: 600;
+}
+
+/* ── Header ── */
+.page-header {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--terracotta); }
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.page-header h1 em { color: var(--terracotta); font-style: italic; }
+.page-header .subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.updated-badge {
+  display: inline-block;
+  background: var(--olive-light);
+  color: var(--olive);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ── Nav tabs ── */
+.section-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 24px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.nav-tab {
+  background: none;
+  border: 1.5px solid var(--border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.nav-tab:hover, .nav-tab.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: white;
+}
+
+/* ── Content ── */
+.content-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.legal-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.legal-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--ink);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--terra-light);
+}
+.legal-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+.legal-section p {
+  font-size: 15px;
+  color: #3D3228;
+  margin-bottom: 12px;
+}
+.legal-section ul {
+  list-style: none;
+  margin-bottom: 14px;
+}
+.legal-section ul li {
+  font-size: 15px;
+  color: #3D3228;
+  padding: 5px 0 5px 22px;
+  position: relative;
+}
+.legal-section ul li::before {
+  content: '›';
+  position: absolute;
+  left: 6px;
+  color: var(--terracotta);
+  font-weight: 700;
+}
+
+.highlight-box {
+  background: var(--terra-light);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--terra-dark);
+}
+.highlight-box strong { font-weight: 600; }
+
+.info-box {
+  background: var(--olive-light);
+  border-left: 3px solid var(--olive);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--olive);
+}
+
+/* ── Footer ── */
+.page-footer {
+  background: var(--warm-white);
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
+}
+.page-footer p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.page-footer a {
+  color: var(--terracotta);
+  text-decoration: none;
+}
+.page-footer a:hover { text-decoration: underline; }
+
+/* ── [lang] ── */
+[data-lang] { display: none; }
+[data-lang].visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════════ -->
+<header class="page-header">
+  <a href="https://qch-pwa.pages.dev" class="back-link">← <span data-i18n="back">Volver a QCH</span></a>
+  <h1>🍽️ <em data-i18n="title_em">Que Comemos Hoy</em></h1>
+  <p class="subtitle" data-i18n="subtitle">Términos de Servicio &amp; Política de Privacidad</p>
+  <span class="updated-badge" data-i18n="updated">Actualizado: junio 2026</span>
+</header>
+
+<nav class="section-nav">
+  <a href="#terminos" class="nav-tab" data-i18n="nav_terms">Términos de Servicio</a>
+  <a href="#privacidad" class="nav-tab" data-i18n="nav_privacy">Privacidad</a>
+  <a href="#pagos" class="nav-tab" data-i18n="nav_payments">Pagos</a>
+  <a href="#contacto" class="nav-tab" data-i18n="nav_contact">Contacto</a>
+</nav>
+
+<main class="content-wrap">
+
+  <!-- ══ TÉRMINOS DE SERVICIO ══ -->
+  <section class="legal-section" id="terminos">
+    <h2 data-i18n="tos_title">Términos de Servicio</h2>
+
+    <div class="highlight-box">
+      <span data-i18n="tos_intro"><strong>Resumen:</strong> QCH es un planificador de cenas familiar con IA. Al usarlo, aceptás estas condiciones. Si tenés dudas, escribinos.</span>
+    </div>
+
+    <h3 data-i18n="tos_s1_h">1. El servicio</h3>
+    <p data-i18n="tos_s1_p">Que Comemos Hoy ("QCH", "el servicio") es una aplicación web progresiva (PWA) que utiliza inteligencia artificial para sugerir cenas semanales personalizadas según las preferencias y restricciones dietarias de cada familia. El servicio es operado por Javier Ramírez, con domicilio en Buenos Aires, Argentina.</p>
+
+    <h3 data-i18n="tos_s2_h">2. Aceptación</h3>
+    <p data-i18n="tos_s2_p">Al acceder y usar QCH, aceptás estos Términos de Servicio. Si no estás de acuerdo, por favor no uses el servicio. El uso continuo luego de cambios en estos términos implica aceptación de las modificaciones.</p>
+
+    <h3 data-i18n="tos_s3_h">3. Cuenta y acceso</h3>
+    <ul>
+      <li data-i18n="tos_s3_1">El acceso requiere autenticación con una cuenta de Google.</li>
+      <li data-i18n="tos_s3_2">Sos responsable de mantener la seguridad de tu cuenta.</li>
+      <li data-i18n="tos_s3_3">Podés tener una sola cuenta por dirección de email.</li>
+      <li data-i18n="tos_s3_4">Nos reservamos el derecho de suspender cuentas que violen estos términos.</li>
+    </ul>
+
+    <h3 data-i18n="tos_s4_h">4. Plan gratuito y límites</h3>
+    <p data-i18n="tos_s4_p">El plan gratuito permite hasta 7 cenas planificadas por mes calendario. Al superar este límite, el servicio se restringe hasta el mes siguiente o hasta que actives el Plan Familiar.</p>
+
+    <h3 data-i18n="tos_s5_h">5. Uso aceptable</h3>
+    <ul>
+      <li data-i18n="tos_s5_1">Usar el servicio para planificación de comidas doméstica y personal.</li>
+      <li data-i18n="tos_s5_2">No automatizar solicitudes masivas a la API.</li>
+      <li data-i18n="tos_s5_3">No intentar acceder a datos de otros usuarios.</li>
+      <li data-i18n="tos_s5_4">No usar el servicio para fines comerciales sin autorización previa.</li>
+    </ul>
+
+    <h3 data-i18n="tos_s6_h">6. Sugerencias de IA</h3>
+    <div class="info-box">
+      <span data-i18n="tos_s6_box">Las sugerencias generadas por inteligencia artificial son orientativas. QCH no es un servicio médico o nutricional. Ante restricciones alimentarias graves o condiciones de salud, consultá a un profesional.</span>
+    </div>
+
+    <h3 data-i18n="tos_s7_h">7. Disponibilidad</h3>
+    <p data-i18n="tos_s7_p">Nos esforzamos por mantener el servicio disponible de forma continua, pero no garantizamos uptime del 100%. Podemos realizar mantenimientos programados o no, y no somos responsables por pérdidas derivadas de interrupciones del servicio.</p>
+
+    <h3 data-i18n="tos_s8_h">8. Modificaciones y terminación</h3>
+    <p data-i18n="tos_s8_p">Podemos modificar o discontinuar el servicio en cualquier momento. Notificaremos cambios importantes con al menos 15 días de anticipación por email. Podés eliminar tu cuenta y datos en cualquier momento escribiéndonos.</p>
+  </section>
+
+  <!-- ══ PRIVACIDAD ══ -->
+  <section class="legal-section" id="privacidad">
+    <h2 data-i18n="pp_title">Política de Privacidad</h2>
+
+    <div class="highlight-box">
+      <span data-i18n="pp_intro"><strong>Resumen:</strong> Guardamos lo mínimo necesario para que el servicio funcione. No vendemos tus datos. Nunca.</span>
+    </div>
+
+    <h3 data-i18n="pp_s1_h">1. Qué datos recopilamos</h3>
+    <ul>
+      <li data-i18n="pp_s1_1"><strong>Email y nombre:</strong> obtenidos de tu cuenta Google al iniciar sesión.</li>
+      <li data-i18n="pp_s1_2"><strong>Datos de familia:</strong> nombres, edades, dietas y restricciones que vos ingresás voluntariamente.</li>
+      <li data-i18n="pp_s1_3"><strong>Historial de cenas:</strong> las planificaciones semanales y listas de compras generadas.</li>
+      <li data-i18n="pp_s1_4"><strong>Datos de uso:</strong> cantidad de planificaciones por mes, plan activo.</li>
+      <li data-i18n="pp_s1_5"><strong>Datos de pago:</strong> email y estado de la transacción. No almacenamos datos de tarjetas.</li>
+    </ul>
+
+    <h3 data-i18n="pp_s2_h">2. Cómo usamos tus datos</h3>
+    <ul>
+      <li data-i18n="pp_s2_1">Proveer y personalizar las sugerencias de cenas.</li>
+      <li data-i18n="pp_s2_2">Gestionar tu cuenta, plan y límites de uso.</li>
+      <li data-i18n="pp_s2_3">Enviarte notificaciones push semanales (solo si las habilitaste).</li>
+      <li data-i18n="pp_s2_4">Procesar y verificar pagos.</li>
+      <li data-i18n="pp_s2_5">Mejorar el servicio (en forma agregada y anónima).</li>
+    </ul>
+
+    <h3 data-i18n="pp_s3_h">3. Con quién compartimos datos</h3>
+    <p data-i18n="pp_s3_p">No vendemos ni compartimos tus datos personales con terceros, salvo con los proveedores de infraestructura necesarios para operar el servicio:</p>
+    <ul>
+      <li data-i18n="pp_s3_1"><strong>Cloudflare:</strong> hosting, base de datos D1 y workers (servidores en EE.UU./UE).</li>
+      <li data-i18n="pp_s3_2"><strong>Google:</strong> autenticación OAuth2 e IA (Gemini API).</li>
+      <li data-i18n="pp_s3_3"><strong>MercadoPago:</strong> procesamiento de pagos en pesos argentinos.</li>
+      <li data-i18n="pp_s3_4"><strong>LemonSqueezy / Stripe:</strong> procesamiento de pagos internacionales en USD.</li>
+    </ul>
+
+    <h3 data-i18n="pp_s4_h">4. Retención de datos</h3>
+    <p data-i18n="pp_s4_p">Conservamos tus datos mientras tu cuenta esté activa. Si eliminás tu cuenta, eliminamos todos tus datos dentro de los 30 días siguientes a tu solicitud.</p>
+
+    <h3 data-i18n="pp_s5_h">5. Tus derechos</h3>
+    <ul>
+      <li data-i18n="pp_s5_1"><strong>Acceso:</strong> podés solicitar una copia de tus datos.</li>
+      <li data-i18n="pp_s5_2"><strong>Corrección:</strong> podés modificar tus datos directamente en la app.</li>
+      <li data-i18n="pp_s5_3"><strong>Eliminación:</strong> podés solicitar el borrado total de tu cuenta y datos.</li>
+      <li data-i18n="pp_s5_4"><strong>Portabilidad:</strong> podés solicitar tus datos en formato legible.</li>
+    </ul>
+    <p data-i18n="pp_s5_contact">Para ejercer estos derechos escribinos a <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>.</p>
+
+    <h3 data-i18n="pp_s6_h">6. Cookies y almacenamiento local</h3>
+    <p data-i18n="pp_s6_p">QCH usa <code>localStorage</code> del navegador para guardar tu sesión activa (token de Google) y preferencias de idioma. No usamos cookies de seguimiento ni publicidad de terceros.</p>
+
+    <h3 data-i18n="pp_s7_h">7. Seguridad</h3>
+    <p data-i18n="pp_s7_p">Toda comunicación entre el frontend y el servidor se realiza por HTTPS. Los tokens de autenticación se verifican en cada solicitud. La base de datos se encuentra en la infraestructura de Cloudflare con acceso restringido.</p>
+
+    <h3 data-i18n="pp_s8_h">8. Menores de edad</h3>
+    <p data-i18n="pp_s8_p">QCH está diseñado para ser usado por adultos. No recopilamos datos de menores de 13 años de forma directa. Los datos de integrantes menores de la familia son ingresados por el adulto responsable de la cuenta.</p>
+  </section>
+
+  <!-- ══ PAGOS ══ -->
+  <section class="legal-section" id="pagos">
+    <h2 data-i18n="pay_title">Política de Pagos</h2>
+
+    <h3 data-i18n="pay_s1_h">1. Plan Familiar</h3>
+    <p data-i18n="pay_s1_p">El Plan Familiar permite planificaciones ilimitadas durante 30 días desde la fecha de pago. El precio varía según la moneda:</p>
+    <ul>
+      <li data-i18n="pay_s1_1"><strong>Argentina (ARS):</strong> $7.860 pesos por mes (IVA incluido), pagado vía MercadoPago.</li>
+      <li data-i18n="pay_s1_2"><strong>Internacional (USD):</strong> USD 4,99 por mes, pagado vía LemonSqueezy.</li>
+    </ul>
+
+    <h3 data-i18n="pay_s2_h">2. Renovación</h3>
+    <p data-i18n="pay_s2_p">El plan no se renueva automáticamente. Al vencer el período, la cuenta vuelve al plan gratuito. Para continuar, debés realizar un nuevo pago.</p>
+
+    <h3 data-i18n="pay_s3_h">3. Reembolsos</h3>
+    <p data-i18n="pay_s3_p">Si el servicio presenta fallas graves que impidan su uso dentro del período pago, podés solicitar un reembolso total dentro de los 7 días siguientes al pago escribiéndonos a <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>. Evaluamos cada caso individualmente.</p>
+
+    <div class="highlight-box">
+      <span data-i18n="pay_box">No almacenamos datos de tarjetas. Los pagos son procesados directamente por MercadoPago o LemonSqueezy, bajo sus propias políticas de seguridad.</span>
+    </div>
+
+    <h3 data-i18n="pay_s4_h">4. Precios</h3>
+    <p data-i18n="pay_s4_p">Los precios pueden actualizarse periódicamente. Notificaremos cambios por email con al menos 15 días de anticipación. El precio al momento del pago es el vigente.</p>
+  </section>
+
+  <!-- ══ CONTACTO ══ -->
+  <section class="legal-section" id="contacto">
+    <h2 data-i18n="contact_title">Contacto</h2>
+    <p data-i18n="contact_p">Para consultas sobre estos términos, solicitudes de datos o cualquier otra cuestión legal:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a></li>
+      <li data-i18n="contact_li2"><strong>Responsable:</strong> Javier Ramírez</li>
+      <li data-i18n="contact_li3"><strong>Domicilio:</strong> Buenos Aires, Argentina</li>
+      <li><strong>App:</strong> <a href="https://qch-pwa.pages.dev">qch-pwa.pages.dev</a></li>
+    </ul>
+    <div class="info-box" style="margin-top:20px">
+      <span data-i18n="contact_box">Respondemos consultas en un plazo máximo de 72 horas hábiles.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <p data-i18n="footer_1">© 2026 Que Comemos Hoy. Todos los derechos reservados.</p>
+  <p><a href="https://qch-pwa.pages.dev" data-i18n="footer_link">← Volver a la app</a></p>
+</footer>
+
+<script>
+const i18n = {
+  es: {
+    back: 'Volver a QCH',
+    title_em: 'Que Comemos Hoy',
+    subtitle: 'Términos de Servicio &amp; Política de Privacidad',
+    updated: 'Actualizado: junio 2026',
+    nav_terms: 'Términos de Servicio',
+    nav_privacy: 'Privacidad',
+    nav_payments: 'Pagos',
+    nav_contact: 'Contacto',
+
+    tos_title: 'Términos de Servicio',
+    tos_intro: '<strong>Resumen:</strong> QCH es un planificador de cenas familiar con IA. Al usarlo, aceptás estas condiciones. Si tenés dudas, escribinos.',
+    tos_s1_h: '1. El servicio',
+    tos_s1_p: 'Que Comemos Hoy ("QCH", "el servicio") es una aplicación web progresiva (PWA) que utiliza inteligencia artificial para sugerir cenas semanales personalizadas según las preferencias y restricciones dietarias de cada familia. El servicio es operado por Javier Ramírez, con domicilio en Buenos Aires, Argentina.',
+    tos_s2_h: '2. Aceptación',
+    tos_s2_p: 'Al acceder y usar QCH, aceptás estos Términos de Servicio. Si no estás de acuerdo, por favor no uses el servicio. El uso continuo luego de cambios en estos términos implica aceptación de las modificaciones.',
+    tos_s3_h: '3. Cuenta y acceso',
+    tos_s3_1: 'El acceso requiere autenticación con una cuenta de Google.',
+    tos_s3_2: 'Sos responsable de mantener la seguridad de tu cuenta.',
+    tos_s3_3: 'Podés tener una sola cuenta por dirección de email.',
+    tos_s3_4: 'Nos reservamos el derecho de suspender cuentas que violen estos términos.',
+    tos_s4_h: '4. Plan gratuito y límites',
+    tos_s4_p: 'El plan gratuito permite hasta 7 cenas planificadas por mes calendario. Al superar este límite, el servicio se restringe hasta el mes siguiente o hasta que actives el Plan Familiar.',
+    tos_s5_h: '5. Uso aceptable',
+    tos_s5_1: 'Usar el servicio para planificación de comidas doméstica y personal.',
+    tos_s5_2: 'No automatizar solicitudes masivas a la API.',
+    tos_s5_3: 'No intentar acceder a datos de otros usuarios.',
+    tos_s5_4: 'No usar el servicio para fines comerciales sin autorización previa.',
+    tos_s6_h: '6. Sugerencias de IA',
+    tos_s6_box: 'Las sugerencias generadas por inteligencia artificial son orientativas. QCH no es un servicio médico o nutricional. Ante restricciones alimentarias graves o condiciones de salud, consultá a un profesional.',
+    tos_s7_h: '7. Disponibilidad',
+    tos_s7_p: 'Nos esforzamos por mantener el servicio disponible de forma continua, pero no garantizamos uptime del 100%. Podemos realizar mantenimientos programados o no, y no somos responsables por pérdidas derivadas de interrupciones del servicio.',
+    tos_s8_h: '8. Modificaciones y terminación',
+    tos_s8_p: 'Podemos modificar o discontinuar el servicio en cualquier momento. Notificaremos cambios importantes con al menos 15 días de anticipación por email. Podés eliminar tu cuenta y datos en cualquier momento escribiéndonos.',
+
+    pp_title: 'Política de Privacidad',
+    pp_intro: '<strong>Resumen:</strong> Guardamos lo mínimo necesario para que el servicio funcione. No vendemos tus datos. Nunca.',
+    pp_s1_h: '1. Qué datos recopilamos',
+    pp_s1_1: '<strong>Email y nombre:</strong> obtenidos de tu cuenta Google al iniciar sesión.',
+    pp_s1_2: '<strong>Datos de familia:</strong> nombres, edades, dietas y restricciones que vos ingresás voluntariamente.',
+    pp_s1_3: '<strong>Historial de cenas:</strong> las planificaciones semanales y listas de compras generadas.',
+    pp_s1_4: '<strong>Datos de uso:</strong> cantidad de planificaciones por mes, plan activo.',
+    pp_s1_5: '<strong>Datos de pago:</strong> email y estado de la transacción. No almacenamos datos de tarjetas.',
+    pp_s2_h: '2. Cómo usamos tus datos',
+    pp_s2_1: 'Proveer y personalizar las sugerencias de cenas.',
+    pp_s2_2: 'Gestionar tu cuenta, plan y límites de uso.',
+    pp_s2_3: 'Enviarte notificaciones push semanales (solo si las habilitaste).',
+    pp_s2_4: 'Procesar y verificar pagos.',
+    pp_s2_5: 'Mejorar el servicio (en forma agregada y anónima).',
+    pp_s3_h: '3. Con quién compartimos datos',
+    pp_s3_p: 'No vendemos ni compartimos tus datos personales con terceros, salvo con los proveedores de infraestructura necesarios para operar el servicio:',
+    pp_s3_1: '<strong>Cloudflare:</strong> hosting, base de datos D1 y workers (servidores en EE.UU./UE).',
+    pp_s3_2: '<strong>Google:</strong> autenticación OAuth2 e IA (Gemini API).',
+    pp_s3_3: '<strong>MercadoPago:</strong> procesamiento de pagos en pesos argentinos.',
+    pp_s3_4: '<strong>LemonSqueezy / Stripe:</strong> procesamiento de pagos internacionales en USD.',
+    pp_s4_h: '4. Retención de datos',
+    pp_s4_p: 'Conservamos tus datos mientras tu cuenta esté activa. Si eliminás tu cuenta, eliminamos todos tus datos dentro de los 30 días siguientes a tu solicitud.',
+    pp_s5_h: '5. Tus derechos',
+    pp_s5_1: '<strong>Acceso:</strong> podés solicitar una copia de tus datos.',
+    pp_s5_2: '<strong>Corrección:</strong> podés modificar tus datos directamente en la app.',
+    pp_s5_3: '<strong>Eliminación:</strong> podés solicitar el borrado total de tu cuenta y datos.',
+    pp_s5_4: '<strong>Portabilidad:</strong> podés solicitar tus datos en formato legible.',
+    pp_s5_contact: 'Para ejercer estos derechos escribinos a <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>.',
+    pp_s6_h: '6. Cookies y almacenamiento local',
+    pp_s6_p: 'QCH usa <code>localStorage</code> del navegador para guardar tu sesión activa (token de Google) y preferencias de idioma. No usamos cookies de seguimiento ni publicidad de terceros.',
+    pp_s7_h: '7. Seguridad',
+    pp_s7_p: 'Toda comunicación entre el frontend y el servidor se realiza por HTTPS. Los tokens de autenticación se verifican en cada solicitud. La base de datos se encuentra en la infraestructura de Cloudflare con acceso restringido.',
+    pp_s8_h: '8. Menores de edad',
+    pp_s8_p: 'QCH está diseñado para ser usado por adultos. No recopilamos datos de menores de 13 años de forma directa. Los datos de integrantes menores de la familia son ingresados por el adulto responsable de la cuenta.',
+
+    pay_title: 'Política de Pagos',
+    pay_s1_h: '1. Plan Familiar',
+    pay_s1_p: 'El Plan Familiar permite planificaciones ilimitadas durante 30 días desde la fecha de pago. El precio varía según la moneda:',
+    pay_s1_1: '<strong>Argentina (ARS):</strong> $7.860 pesos por mes (IVA incluido), pagado vía MercadoPago.',
+    pay_s1_2: '<strong>Internacional (USD):</strong> USD 4,99 por mes, pagado vía LemonSqueezy.',
+    pay_s2_h: '2. Renovación',
+    pay_s2_p: 'El plan no se renueva automáticamente. Al vencer el período, la cuenta vuelve al plan gratuito. Para continuar, debés realizar un nuevo pago.',
+    pay_s3_h: '3. Reembolsos',
+    pay_s3_p: 'Si el servicio presenta fallas graves que impidan su uso dentro del período pago, podés solicitar un reembolso total dentro de los 7 días siguientes al pago escribiéndonos a <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>. Evaluamos cada caso individualmente.',
+    pay_box: 'No almacenamos datos de tarjetas. Los pagos son procesados directamente por MercadoPago o LemonSqueezy, bajo sus propias políticas de seguridad.',
+    pay_s4_h: '4. Precios',
+    pay_s4_p: 'Los precios pueden actualizarse periódicamente. Notificaremos cambios por email con al menos 15 días de anticipación. El precio al momento del pago es el vigente.',
+
+    contact_title: 'Contacto',
+    contact_p: 'Para consultas sobre estos términos, solicitudes de datos o cualquier otra cuestión legal:',
+    contact_li2: '<strong>Responsable:</strong> Javier Ramírez',
+    contact_li3: '<strong>Domicilio:</strong> Buenos Aires, Argentina',
+    contact_box: 'Respondemos consultas en un plazo máximo de 72 horas hábiles.',
+
+    footer_1: '© 2026 Que Comemos Hoy. Todos los derechos reservados.',
+    footer_link: '← Volver a la app',
+  },
+  en: {
+    back: 'Back to QCH',
+    title_em: 'Que Comemos Hoy',
+    subtitle: 'Terms of Service &amp; Privacy Policy',
+    updated: 'Last updated: June 2026',
+    nav_terms: 'Terms of Service',
+    nav_privacy: 'Privacy',
+    nav_payments: 'Payments',
+    nav_contact: 'Contact',
+
+    tos_title: 'Terms of Service',
+    tos_intro: '<strong>Summary:</strong> QCH is an AI-powered family meal planner. By using it, you agree to these terms. Questions? Reach out.',
+    tos_s1_h: '1. The Service',
+    tos_s1_p: 'Que Comemos Hoy ("QCH", "the service") is a progressive web app (PWA) that uses artificial intelligence to suggest personalized weekly dinners based on each family\'s preferences and dietary restrictions. The service is operated by Javier Ramírez, based in Buenos Aires, Argentina.',
+    tos_s2_h: '2. Acceptance',
+    tos_s2_p: 'By accessing and using QCH, you agree to these Terms of Service. If you disagree, please do not use the service. Continued use after changes to these terms implies acceptance of the modifications.',
+    tos_s3_h: '3. Account & Access',
+    tos_s3_1: 'Access requires authentication with a Google account.',
+    tos_s3_2: 'You are responsible for maintaining the security of your account.',
+    tos_s3_3: 'You may have one account per email address.',
+    tos_s3_4: 'We reserve the right to suspend accounts that violate these terms.',
+    tos_s4_h: '4. Free Plan & Limits',
+    tos_s4_p: 'The free plan allows up to 7 planned dinners per calendar month. Once this limit is reached, the service is restricted until the next month or until you activate the Family Plan.',
+    tos_s5_h: '5. Acceptable Use',
+    tos_s5_1: 'Use the service for personal and household meal planning.',
+    tos_s5_2: 'Do not automate bulk API requests.',
+    tos_s5_3: 'Do not attempt to access other users\' data.',
+    tos_s5_4: 'Do not use the service for commercial purposes without prior authorization.',
+    tos_s6_h: '6. AI Suggestions',
+    tos_s6_box: 'AI-generated suggestions are for guidance only. QCH is not a medical or nutritional service. For serious dietary restrictions or health conditions, please consult a professional.',
+    tos_s7_h: '7. Availability',
+    tos_s7_p: 'We strive to keep the service continuously available but do not guarantee 100% uptime. We may perform scheduled or unscheduled maintenance and are not responsible for losses resulting from service interruptions.',
+    tos_s8_h: '8. Modifications & Termination',
+    tos_s8_p: 'We may modify or discontinue the service at any time. We will notify you of significant changes at least 15 days in advance by email. You may delete your account and data at any time by contacting us.',
+
+    pp_title: 'Privacy Policy',
+    pp_intro: '<strong>Summary:</strong> We store the minimum data needed to run the service. We never sell your data. Ever.',
+    pp_s1_h: '1. Data We Collect',
+    pp_s1_1: '<strong>Email and name:</strong> obtained from your Google account on sign-in.',
+    pp_s1_2: '<strong>Family data:</strong> names, ages, diets, and restrictions you voluntarily enter.',
+    pp_s1_3: '<strong>Meal history:</strong> weekly meal plans and generated shopping lists.',
+    pp_s1_4: '<strong>Usage data:</strong> monthly plan count, active subscription.',
+    pp_s1_5: '<strong>Payment data:</strong> email and transaction status. We do not store card details.',
+    pp_s2_h: '2. How We Use Your Data',
+    pp_s2_1: 'Provide and personalize meal suggestions.',
+    pp_s2_2: 'Manage your account, plan, and usage limits.',
+    pp_s2_3: 'Send weekly push notifications (only if enabled by you).',
+    pp_s2_4: 'Process and verify payments.',
+    pp_s2_5: 'Improve the service (in aggregated, anonymous form).',
+    pp_s3_h: '3. Data Sharing',
+    pp_s3_p: 'We do not sell or share your personal data with third parties, except with the infrastructure providers necessary to operate the service:',
+    pp_s3_1: '<strong>Cloudflare:</strong> hosting, D1 database, and workers (servers in US/EU).',
+    pp_s3_2: '<strong>Google:</strong> OAuth2 authentication and AI (Gemini API).',
+    pp_s3_3: '<strong>MercadoPago:</strong> payment processing in Argentine pesos.',
+    pp_s3_4: '<strong>LemonSqueezy / Stripe:</strong> international payment processing in USD.',
+    pp_s4_h: '4. Data Retention',
+    pp_s4_p: 'We retain your data while your account is active. If you delete your account, we delete all your data within 30 days of your request.',
+    pp_s5_h: '5. Your Rights',
+    pp_s5_1: '<strong>Access:</strong> you may request a copy of your data.',
+    pp_s5_2: '<strong>Correction:</strong> you may update your data directly in the app.',
+    pp_s5_3: '<strong>Deletion:</strong> you may request full deletion of your account and data.',
+    pp_s5_4: '<strong>Portability:</strong> you may request your data in a readable format.',
+    pp_s5_contact: 'To exercise these rights, contact us at <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>.',
+    pp_s6_h: '6. Cookies & Local Storage',
+    pp_s6_p: 'QCH uses browser <code>localStorage</code> to store your active session (Google token) and language preferences. We do not use tracking cookies or third-party advertising.',
+    pp_s7_h: '7. Security',
+    pp_s7_p: 'All communication between the frontend and server uses HTTPS. Authentication tokens are verified on every request. The database runs on Cloudflare\'s infrastructure with restricted access.',
+    pp_s8_h: '8. Minors',
+    pp_s8_p: 'QCH is designed for use by adults. We do not directly collect data from children under 13. Data for minor family members is entered by the responsible adult account holder.',
+
+    pay_title: 'Payment Policy',
+    pay_s1_h: '1. Family Plan',
+    pay_s1_p: 'The Family Plan provides unlimited meal planning for 30 days from the payment date. Pricing varies by currency:',
+    pay_s1_1: '<strong>Argentina (ARS):</strong> $7,860 pesos/month (VAT included), via MercadoPago.',
+    pay_s1_2: '<strong>International (USD):</strong> USD 4.99/month, via LemonSqueezy.',
+    pay_s2_h: '2. Renewal',
+    pay_s2_p: 'The plan does not renew automatically. When the period expires, the account reverts to the free plan. To continue, you must make a new payment.',
+    pay_s3_h: '3. Refunds',
+    pay_s3_p: 'If the service experiences serious failures preventing use during a paid period, you may request a full refund within 7 days of payment by contacting us at <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>. We evaluate each case individually.',
+    pay_box: 'We do not store card data. Payments are processed directly by MercadoPago or LemonSqueezy under their own security policies.',
+    pay_s4_h: '4. Pricing',
+    pay_s4_p: 'Prices may be updated periodically. We will notify you of changes by email at least 15 days in advance. The price at the time of payment is the applicable one.',
+
+    contact_title: 'Contact',
+    contact_p: 'For questions about these terms, data requests, or any other legal matter:',
+    contact_li2: '<strong>Responsible party:</strong> Javier Ramírez',
+    contact_li3: '<strong>Address:</strong> Buenos Aires, Argentina',
+    contact_box: 'We respond to inquiries within a maximum of 72 business hours.',
+
+    footer_1: '© 2026 Que Comemos Hoy. All rights reserved.',
+    footer_link: '← Back to the app',
+  }
+};
+
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Update page title
+  document.title = lang === 'en'
+    ? 'Terms & Privacy — Que Comemos Hoy'
+    : 'Términos y Privacidad — Que Comemos Hoy';
+}
+
+// Detect browser language
+const browserLang = (navigator.language || '').startsWith('en') ? 'en' : 'es';
+setLang(browserLang);
+
+// Highlight active nav tab on scroll
+const sections = document.querySelectorAll('.legal-section');
+const navTabs  = document.querySelectorAll('.nav-tab');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navTabs.forEach(t => t.classList.remove('active'));
+      const active = document.querySelector(`.nav-tab[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
+
