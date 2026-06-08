@@ -79,6 +79,15 @@ body {
   padding: 80px 24px 60px;
   position: relative;
   overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1543353071-873f17a7a088?w=1400&q=60&auto=format');
+  background-size: cover;
+  background-position: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(250,246,240,0.92) 0%, rgba(250,246,240,0.97) 60%, rgba(250,246,240,1) 100%);
+  pointer-events: none;
 }
 .hero::before {
   content: '';
@@ -157,17 +166,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
   animation: fadeInUp 1s 1.5s both;
+  white-space: nowrap;
 }
 .scroll-arrow {
-  width: 20px; height: 20px;
-  border-right: 2px solid var(--muted);
-  border-bottom: 2px solid var(--muted);
+  width: 24px; height: 24px;
+  border-right: 2px solid var(--terracotta);
+  border-bottom: 2px solid var(--terracotta);
   transform: rotate(45deg);
   animation: bounce 1.5s ease-in-out infinite;
+  opacity: 0.7;
 }
 @keyframes bounce {
   0%, 100% { transform: rotate(45deg) translateY(0); }
@@ -440,14 +452,15 @@ footer a:hover { color: white; }
 </div>
 
 <div class="hero">
+  <div class="hero-overlay"></div>
   <span class="hero-emoji">🍽️</span>
   <h1 class="hero-title" data-i18n="heroTitle">Que Comemos<br><em>Hoy</em></h1>
   <p class="hero-subtitle" data-i18n="heroSubtitle">Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.</p>
   <a href="https://app.qch.com.ar" class="btn-hero">
-    <span data-i18n="heroCta">📲 Instalar gratis</span>
+    <span data-i18n="heroCta">📲 Probalo gratis</span>
   </a>
   <p class="hero-note" data-i18n="heroNote">Sin descargas. Funciona en tu celular como app. <strong>Gratis para empezar.</strong></p>
-  <div class="scroll-hint"><div class="scroll-arrow"></div></div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div><span data-i18n="scrollHint">Deslizá para ver más</span></div>
 </div>
 
 <div class="social-strip">
@@ -532,6 +545,28 @@ footer a:hover { color: white; }
   </div>
 </div>
 
+
+<!-- ══ FOOD PHOTOS ══════════════════════════════════════════ -->
+<div style="background:var(--cream);padding:0;overflow:hidden">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-height:320px;overflow:hidden">
+    <div style="overflow:hidden;aspect-ratio:1">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=70&auto=format"
+           alt="Plato casero" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s"
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="overflow:hidden;aspect-ratio:1">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=70&auto=format"
+           alt="Cena familiar" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s"
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="overflow:hidden;aspect-ratio:1">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=70&auto=format"
+           alt="Ingredientes frescos" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s"
+           onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+  </div>
+</div>
+
 <section class="pricing-section">
   <div class="section-label" data-i18n="pricingLabel">Planes</div>
   <h2 class="section-title" data-i18n="pricingTitle">Simple y <em>transparente</em></h2>
@@ -540,12 +575,13 @@ footer a:hover { color: white; }
     <div class="plan-card">
       <div class="plan-name" data-i18n="plan1name">Gratis</div>
       <div class="plan-price">$0<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif">/mes</span></div>
-      <div class="plan-period" data-i18n="plan1period">Hasta 6 meses gratis</div>
+      <div class="plan-period" data-i18n="plan1period">Para siempre</div>
       <ul class="plan-features">
-        <li data-i18n="plan1f1">2 planificaciones/mes el primer mes</li>
+        <li data-i18n="plan1f1">7 cenas (primeras 2 semanas)</li>
         <li data-i18n="plan1f2">Lista de compras (bloqueada)</li>
-        <li class="muted" data-i18n="plan1f3">Cenas ilimitadas</li>
-        <li class="muted" data-i18n="plan1f4">Lista de compras desbloqueada</li>
+        <li data-i18n="plan1f3">Historial de semanas</li>
+        <li class="muted" data-i18n="plan1f4">Cenas ilimitadas</li>
+        <li class="muted" data-i18n="plan1f5">Lista de compras desbloqueada</li>
       </ul>
       <a href="https://app.qch.com.ar" class="btn-plan btn-plan-secondary" data-i18n="plan1cta">Empezar gratis</a>
     </div>
@@ -581,8 +617,6 @@ footer a:hover { color: white; }
     <a href="https://app.qch.com.ar" data-i18n="footerApp">Abrir la app</a>
     &nbsp;·&nbsp;
     <a href="mailto:hola@qch.com.ar">Contacto</a>
-    &nbsp;·&nbsp;
-    <a href="/legal" data-i18n="footerLegal">Términos y Privacidad</a>
   </div>
 </footer>
 
@@ -595,12 +629,13 @@ var LANG = {
   es: {
     heroTitle:    'Que Comemos<br><em>Hoy</em>',
     heroSubtitle: 'Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.',
-    heroCta:      '📲 Instalar gratis',
-    heroNote:     'Sin descargas. Funciona en tu celular como una app. <strong>Gratis para empezar.</strong>',
+    heroCta:      '📲 Probalo gratis',
+    heroNote:     'Sin descargas ni registros complicados. <strong>Gratis para empezar.</strong>',
+    scrollHint:   'Deslizá para ver más',
     proofPwa:     '<strong>PWA instalable</strong> · sin App Store',
     proofAr:      '<strong>Hecho en Argentina</strong>',
     proofAi:      '<strong>Powered by Claude AI</strong>',
-    proofFree:    '<strong>1 mes gratis</strong> para empezar',
+    proofFree:    '<strong>2 semanas gratis</strong> para empezar',
     howLabel:     'Cómo funciona',
     howTitle:     'Del caos al menú<br><em>en 2 minutos</em>',
     howDesc:      'Sin pensar qué cocinar, sin repetir la semana anterior, sin olvidar las restricciones de cada uno.',
@@ -617,9 +652,9 @@ var LANG = {
     feat4title:'Banco de recetas',      feat4desc:'Cargá tus recetas favoritas y la IA las va a priorizar cada semana.',
     pricingLabel:'Planes',
     pricingTitle:'Simple y <em>transparente</em>',
-    plan1name:'Gratis', plan1period:'Hasta 6 meses gratis',
-    plan1f1:'2 planificaciones/mes el primer mes', plan1f2:'Lista de compras (bloqueada)',
-    plan1f3:'Cenas ilimitadas', plan1f4:'Lista de compras desbloqueada', plan1cta:'Empezar gratis',
+    plan1name:'Gratis', plan1period:'Para siempre',
+    plan1f1:'7 cenas (primeras 2 semanas)', plan1f2:'Lista de compras (bloqueada)', plan1f3:'Historial de semanas',
+    plan1f4:'Cenas ilimitadas', plan1f5:'Lista de compras desbloqueada', plan1cta:'Empezar gratis',
     featuredBadge:'Más popular',
     plan2name:'Familiar', plan2period:'Cancelá cuando quieras',
     plan2price:'$7.860<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif"> ARS/mes (c/ IVA)</span>',
@@ -627,20 +662,20 @@ var LANG = {
     plan2f4:'Banco de recetas ilimitado', plan2f5:'Recordatorios semanales', plan2cta:'Empezar ahora →',
     ctaTitle:'¿Qué cenamos<br><em>esta semana?</em>',
     ctaDesc:'Instalá la app en tu celular en 30 segundos. Sin tarjeta de crédito para empezar.',
-    ctaBtn:'📲 Instalar gratis',
+    ctaBtn:'📲 Probalo gratis',
     footerCopy:'© 2026 qch.com.ar · Hecho con ❤️ en Argentina',
     footerApp:'Abrir la app',
-    footerLegal:'Términos y Privacidad',
   },
   en: {
     heroTitle:    "What's for<br><em>Dinner?</em>",
     heroSubtitle: "Plan your family's dinners for the whole week in seconds. Powered by AI, never repeating.",
-    heroCta:      '📲 Install for free',
-    heroNote:     'No downloads needed. Works on your phone like an app. <strong>Free to start.</strong>',
+    heroCta:      '📲 Try it free',
+    heroNote:     'No complicated sign-ups. <strong>Free to start.</strong>',
+    scrollHint:   'Scroll to learn more',
     proofPwa:     '<strong>Installable PWA</strong> · no App Store',
     proofAr:      '<strong>Made in Argentina</strong>',
     proofAi:      '<strong>Powered by Claude AI</strong>',
-    proofFree:    '<strong>1 month free</strong> to start',
+    proofFree:    '<strong>2 weeks free</strong> to start',
     howLabel:     'How it works',
     howTitle:     'From chaos to menu<br><em>in 2 minutes</em>',
     howDesc:      'No more "what do we eat tonight?". No repeats. No forgotten dietary restrictions.',
@@ -657,9 +692,9 @@ var LANG = {
     feat4title:'Recipe bank',        feat4desc:'Add your favorite recipes and AI will prioritize them every week.',
     pricingLabel:'Pricing',
     pricingTitle:'Simple and <em>transparent</em>',
-    plan1name:'Free', plan1period:'Up to 6 months free',
-    plan1f1:'2 plannings/month the first month', plan1f2:'Shopping list (locked)',
-    plan1f3:'Unlimited dinners', plan1f4:'Shopping list unlocked', plan1cta:'Start for free',
+    plan1name:'Free', plan1period:'Forever',
+    plan1f1:'7 dinners (first 2 weeks)', plan1f2:'Shopping list (locked)', plan1f3:'Weeks history',
+    plan1f4:'Unlimited dinners', plan1f5:'Shopping list unlocked', plan1cta:'Start for free',
     featuredBadge:'Most popular',
     plan2name:'Family', plan2period:'Cancel anytime',
     plan2price:'USD 5,99<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif"> /month</span>',
@@ -667,10 +702,9 @@ var LANG = {
     plan2f4:'Unlimited recipe bank', plan2f5:'Weekly reminders', plan2cta:'Get started →',
     ctaTitle:"What's for dinner<br><em>this week?</em>",
     ctaDesc:'Install the app on your phone in 30 seconds. No credit card required to start.',
-    ctaBtn:'📲 Install for free',
+    ctaBtn:'📲 Try it free',
     footerCopy:'© 2026 qch.com.ar · Made with ❤️ in Argentina',
     footerApp:'Open the app',
-    footerLegal:'Terms & Privacy',
   }
 };
 
