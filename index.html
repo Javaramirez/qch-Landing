@@ -396,18 +396,19 @@ section {
 .btn-plan-secondary:hover { background: var(--terra-light); }
 
 .cta-section {
-  background: rgba(200,85,61,0.95); padding: 80px 24px;
+  background: rgba(200,85,61,0.82); padding: 80px 24px;
   text-align: center; position: relative; overflow: hidden;
 }
 .cta-section::before {
   content: '🍽️'; position: absolute; font-size: 200px;
   opacity: 0.06; right: -30px; top: -30px; line-height: 1;
 }
-.cta-section .section-title { color: white; }
-.cta-section .section-title em { color: rgba(255,255,255,0.7); }
+.cta-section .section-title { color: white; text-shadow: 0 1px 8px rgba(0,0,0,0.15); }
+.cta-section .section-title em { color: rgba(255,255,255,0.85); font-style: italic; }
 .cta-desc {
-  font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6;
+  font-size: 17px; color: rgba(255,255,255,0.90); line-height: 1.6;
   margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .btn-cta {
   display: inline-flex; align-items: center; gap: 10px;
@@ -606,7 +607,7 @@ footer a:hover { color: white; }
 </section>
 
 <div class="cta-section">
-  <section style="padding:0;max-width:640px">
+  <section style="padding:0;max-width:640px;background:transparent;">
     <h2 class="section-title" data-i18n="ctaTitle">¿Qué cenamos<br><em>esta semana?</em></h2>
     <p class="cta-desc" data-i18n="ctaDesc">Instalá la app en tu celular en 30 segundos. Sin tarjeta de crédito para empezar.</p>
     <a href="https://app.qch.com.ar" class="btn-cta" data-i18n="ctaBtn">📲 Instalar gratis</a>
