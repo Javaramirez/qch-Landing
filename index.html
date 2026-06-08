@@ -212,6 +212,7 @@ section {
   padding: 80px 24px;
   max-width: 900px;
   margin: 0 auto;
+  background: rgba(250,246,240,0.88);
 }
 .section-label {
   font-size: 11px;
@@ -236,7 +237,7 @@ section {
   max-width: 560px;
 }
 
-.how-section { text-align: center; }
+.how-section { text-align: center; background: rgba(250,246,240,0.90); border-radius: 24px; }
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -341,7 +342,7 @@ section {
 .phone-screen-placeholder .ph-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif; }
 @media (min-width: 700px) { .phone-mock { flex: 0 0 220px; } }
 
-.features-strip { background: var(--ink); color: white; padding: 60px 24px; }
+.features-strip { background: rgba(28,24,18,0.92); color: white; padding: 60px 24px; }
 .features-strip-inner {
   max-width: 900px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px;
@@ -351,7 +352,7 @@ section {
 .feat-title { font-weight: 600; font-size: 15px; }
 .feat-desc  { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
-.pricing-section { text-align: center; }
+.pricing-section { text-align: center; background: rgba(250,246,240,0.90); }
 .plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -359,7 +360,7 @@ section {
   max-width: 640px; margin-left: auto; margin-right: auto;
 }
 .plan-card {
-  background: var(--warm-white);
+  background: rgba(255,253,249,0.92);
   border: 1.5px solid var(--border);
   border-radius: 24px; padding: 32px 28px;
   text-align: left; position: relative;
@@ -368,7 +369,7 @@ section {
 .plan-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,24,18,0.1); }
 .plan-card.featured {
   border-color: var(--terracotta);
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFFDF9 100%);
+  background: linear-gradient(135deg, rgba(255,248,245,0.95) 0%, rgba(255,253,249,0.95) 100%);
 }
 .plan-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
@@ -395,7 +396,7 @@ section {
 .btn-plan-secondary:hover { background: var(--terra-light); }
 
 .cta-section {
-  background: var(--terracotta); padding: 80px 24px;
+  background: rgba(200,85,61,0.95); padding: 80px 24px;
   text-align: center; position: relative; overflow: hidden;
 }
 .cta-section::before {
@@ -418,7 +419,7 @@ section {
 .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
 
 footer {
-  background: var(--ink); color: rgba(255,255,255,0.4);
+  background: rgba(28,24,18,0.95); color: rgba(255,255,255,0.4);
   padding: 32px 24px; text-align: center; font-size: 13px;
   display: flex; flex-direction: column; gap: 8px;
 }
