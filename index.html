@@ -31,11 +31,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: var(--cream);
-  background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1600&q=60&auto=format');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
+  background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
 }
@@ -83,12 +79,14 @@ body {
   padding: 80px 24px 60px;
   position: relative;
   overflow: hidden;
-  background-image: none;
+  background-image: url('https://images.unsplash.com/photo-1543353071-873f17a7a088?w=1400&q=60&auto=format');
+  background-size: cover;
+  background-position: center;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(250,246,240,0.82);
+  background: linear-gradient(180deg, rgba(250,246,240,0.92) 0%, rgba(250,246,240,0.97) 60%, rgba(250,246,240,1) 100%);
   pointer-events: none;
 }
 .hero::before {
@@ -189,7 +187,7 @@ body {
 }
 
 .social-strip {
-  background: rgba(255,253,249,0.88);
+  background: var(--warm-white);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 20px 24px;
@@ -212,7 +210,6 @@ section {
   padding: 80px 24px;
   max-width: 900px;
   margin: 0 auto;
-  background: rgba(250,246,240,0.88);
 }
 .section-label {
   font-size: 11px;
@@ -237,7 +234,7 @@ section {
   max-width: 560px;
 }
 
-.how-section { text-align: center; background: rgba(250,246,240,0.90); border-radius: 24px; }
+.how-section { text-align: center; }
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -291,7 +288,7 @@ section {
 }
 
 .screenshots-section {
-  background: rgba(255,253,249,0.88);
+  background: var(--warm-white);
   padding: 80px 0;
   overflow: hidden;
 }
@@ -342,7 +339,7 @@ section {
 .phone-screen-placeholder .ph-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif; }
 @media (min-width: 700px) { .phone-mock { flex: 0 0 220px; } }
 
-.features-strip { background: rgba(28,24,18,0.92); color: white; padding: 60px 24px; }
+.features-strip { background: var(--ink); color: white; padding: 60px 24px; }
 .features-strip-inner {
   max-width: 900px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px;
@@ -352,7 +349,7 @@ section {
 .feat-title { font-weight: 600; font-size: 15px; }
 .feat-desc  { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
-.pricing-section { text-align: center; background: rgba(250,246,240,0.90); }
+.pricing-section { text-align: center; }
 .plans {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -360,7 +357,7 @@ section {
   max-width: 640px; margin-left: auto; margin-right: auto;
 }
 .plan-card {
-  background: rgba(255,253,249,0.92);
+  background: var(--warm-white);
   border: 1.5px solid var(--border);
   border-radius: 24px; padding: 32px 28px;
   text-align: left; position: relative;
@@ -369,7 +366,7 @@ section {
 .plan-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,24,18,0.1); }
 .plan-card.featured {
   border-color: var(--terracotta);
-  background: linear-gradient(135deg, rgba(255,248,245,0.95) 0%, rgba(255,253,249,0.95) 100%);
+  background: linear-gradient(135deg, #FFF8F5 0%, #FFFDF9 100%);
 }
 .plan-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
@@ -396,19 +393,18 @@ section {
 .btn-plan-secondary:hover { background: var(--terra-light); }
 
 .cta-section {
-  background: rgba(200,85,61,0.82); padding: 80px 24px;
+  background: var(--terracotta); padding: 80px 24px;
   text-align: center; position: relative; overflow: hidden;
 }
 .cta-section::before {
   content: '🍽️'; position: absolute; font-size: 200px;
   opacity: 0.06; right: -30px; top: -30px; line-height: 1;
 }
-.cta-section .section-title { color: white; text-shadow: 0 1px 8px rgba(0,0,0,0.15); }
-.cta-section .section-title em { color: rgba(255,255,255,0.85); font-style: italic; }
+.cta-section .section-title { color: white; }
+.cta-section .section-title em { color: rgba(255,255,255,0.7); }
 .cta-desc {
-  font-size: 17px; color: rgba(255,255,255,0.90); line-height: 1.6;
+  font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6;
   margin-bottom: 36px; max-width: 440px; margin-left: auto; margin-right: auto;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .btn-cta {
   display: inline-flex; align-items: center; gap: 10px;
@@ -420,7 +416,7 @@ section {
 .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
 
 footer {
-  background: rgba(28,24,18,0.95); color: rgba(255,255,255,0.4);
+  background: var(--ink); color: rgba(255,255,255,0.4);
   padding: 32px 24px; text-align: center; font-size: 13px;
   display: flex; flex-direction: column; gap: 8px;
 }
@@ -607,7 +603,7 @@ footer a:hover { color: white; }
 </section>
 
 <div class="cta-section">
-  <section style="padding:0;max-width:640px;background:transparent;">
+  <section style="padding:0;max-width:640px">
     <h2 class="section-title" data-i18n="ctaTitle">¿Qué cenamos<br><em>esta semana?</em></h2>
     <p class="cta-desc" data-i18n="ctaDesc">Instalá la app en tu celular en 30 segundos. Sin tarjeta de crédito para empezar.</p>
     <a href="https://app.qch.com.ar" class="btn-cta" data-i18n="ctaBtn">📲 Instalar gratis</a>
@@ -621,6 +617,8 @@ footer a:hover { color: white; }
     <a href="https://app.qch.com.ar" data-i18n="footerApp">Abrir la app</a>
     &nbsp;·&nbsp;
     <a href="mailto:hola@qch.com.ar">Contacto</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.qch.com.ar/legal" data-i18n="footerLegal">Términos y privacidad</a>
   </div>
 </footer>
 
@@ -669,6 +667,7 @@ var LANG = {
     ctaBtn:'📲 Probalo gratis',
     footerCopy:'© 2026 qch.com.ar · Hecho con ❤️ en Argentina',
     footerApp:'Abrir la app',
+    footerLegal:'Términos y privacidad',
   },
   en: {
     heroTitle:    "What's for<br><em>Dinner?</em>",
@@ -709,6 +708,7 @@ var LANG = {
     ctaBtn:'📲 Try it free',
     footerCopy:'© 2026 qch.com.ar · Made with ❤️ in Argentina',
     footerApp:'Open the app',
+    footerLegal:'Terms & Privacy',
   }
 };
 
