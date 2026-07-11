@@ -364,6 +364,12 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(function(el){var key=el.getAttribute('data-i18n');if(LANG[lang]&&LANG[lang][key]!==undefined)el.innerHTML=LANG[lang][key];});
   document.documentElement.lang=lang;
   localStorage.setItem('qch_landing_lang',lang);
+  // Pasar el idioma a la app: app.qch.com.ar es otro dominio y no comparte
+  // localStorage, así que sin esto la app siempre arrancaba en 'es' aunque
+  // el usuario haya navegado la landing en inglés (afectaba incluso el TOS).
+  document.querySelectorAll('a[href^="https://app.qch.com.ar"]').forEach(function(a){
+    a.href = 'https://app.qch.com.ar/?lang=' + lang;
+  });
 }
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.15});
 document.querySelectorAll('.step').forEach(function(el){observer.observe(el);});
