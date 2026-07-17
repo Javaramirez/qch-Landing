@@ -485,6 +485,12 @@ function setLang(lang){
   document.querySelectorAll('a[href^="https://app.qch.com.ar"]').forEach(function(a){
     a.href = 'https://app.qch.com.ar/?lang=' + lang;
   });
+  // Mismo problema pasaba con el link de legales: la página /legal tiene su
+  // propio setLang() que ANTES solo miraba navigator.language, ignorando
+  // este parámetro. Ya está corregido del lado de legal.html también.
+  document.querySelectorAll('a[href*="qch.com.ar/legal"]').forEach(function(a){
+    a.href = 'https://www.qch.com.ar/legal?lang=' + lang;
+  });
   // Demo interactiva: las tarjetas están hardcodeadas por idioma, así que
   // al cambiar de idioma la reiniciamos (evita mezclar textos a mitad de swipe).
   if (typeof demoSetLang === 'function') demoSetLang(lang);
@@ -730,3 +736,4 @@ setLang(localStorage.getItem('qch_landing_lang')||(navigator.language&&navigator
 </script>
 </body>
 </html>
+
