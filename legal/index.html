@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -607,11 +605,23 @@ function setLang(lang) {
   document.title = lang === 'en'
     ? 'Terms & Privacy — Que Comemos Hoy'
     : 'Términos y Privacidad — Que Comemos Hoy';
+
+  // Propagar el idioma elegido a los links de vuelta (landing / app), igual
+  // que hace la landing con los links a app.qch.com.ar — así si el usuario
+  // vuelve, no le arranca de nuevo en español.
+  document.querySelectorAll('a[href="https://www.qch.com.ar"]').forEach(a => {
+    a.href = 'https://www.qch.com.ar/?lang=' + lang;
+  });
 }
 
-// Detect browser language
+// Idioma: primero el parámetro ?lang= que pasan la landing y la app (mismo
+// patrón que ya usa app.qch.com.ar), y si no viene, el idioma del navegador.
+// Antes esta página ignoraba por completo el parámetro de la URL, por eso
+// venir desde la landing en inglés igual mostraba todo en español.
+const urlParams = new URLSearchParams(window.location.search);
+const langParam = urlParams.get('lang');
 const browserLang = (navigator.language || '').startsWith('en') ? 'en' : 'es';
-setLang(browserLang);
+setLang(langParam === 'en' || langParam === 'es' ? langParam : browserLang);
 
 // Highlight active nav tab on scroll
 const sections = document.querySelectorAll('.legal-section');
