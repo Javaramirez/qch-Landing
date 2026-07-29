@@ -216,10 +216,10 @@ footer a:hover { color: white; }
       <p class="section-desc" data-i18n="screensDesc">Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.</p>
     </div>
     <div class="screenshots-scroll">
-      <div class="phone-mock"><img src="screen-home.jpg" alt="Pantalla principal" onerror="this.parentNode.innerHTML=phonePlaceholder('&#127968;','Pantalla principal')"></div>
-      <div class="phone-mock"><img src="screen-sugerencias.jpg" alt="Sugerencias de cenas" onerror="this.parentNode.innerHTML=phonePlaceholder('&#10024;','Sugerencias IA')"></div>
-      <div class="phone-mock"><img src="screen-detalle.jpg" alt="Detalle de receta" onerror="this.parentNode.innerHTML=phonePlaceholder('&#128203;','Detalle de receta')"></div>
-      <div class="phone-mock"><img src="screen-compras.jpg" alt="Lista de compras" onerror="this.parentNode.innerHTML=phonePlaceholder('&#128722;','Lista de compras')"></div>
+      <div class="phone-mock"><img class="qch-screen" data-key="home" data-icon="&#127968;" alt="Pantalla principal"></div>
+      <div class="phone-mock"><img class="qch-screen" data-key="sugerencias" data-icon="&#10024;" alt="Sugerencias de cenas"></div>
+      <div class="phone-mock"><img class="qch-screen" data-key="detalle" data-icon="&#128203;" alt="Detalle de receta"></div>
+      <div class="phone-mock"><img class="qch-screen" data-key="compras" data-icon="&#128722;" alt="Lista de compras"></div>
     </div>
   </div>
 </div>
@@ -308,7 +308,46 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
-function phonePlaceholder(icon,label){return'<div class="phone-screen-placeholder"><div class="ph-icon">'+icon+'</div><div class="ph-title">'+label+'</div><div class="ph-label">Captura próximamente</div></div>';}
+function phonePlaceholder(icon,label,comingSoon){return'<div class="phone-screen-placeholder"><div class="ph-icon">'+icon+'</div><div class="ph-title">'+label+'</div><div class="ph-label">'+comingSoon+'</div></div>';}
+
+// Capturas de pantalla bilingües. Convención de archivo: mismo nombre que
+// ya usa el ES, con sufijo "-en" para la versión inglesa. Si el archivo
+// "-en" todavía no existe (no se sacó la captura), el onerror muestra el
+// placeholder oscuro con el label correcto en el idioma activo — no rompe
+// nada, simplemente indica "próximamente" hasta que subas la foto real.
+var SCREEN_FILES = {
+  home:         { es: 'screen-home.jpg',         en: 'screen-home-en.jpg' },
+  sugerencias:  { es: 'screen-sugerencias.jpg',  en: 'screen-sugerencias-en.jpg' },
+  detalle:      { es: 'screen-detalle.jpg',      en: 'screen-detalle-en.jpg' },
+  compras:      { es: 'screen-compras.jpg',      en: 'screen-compras-en.jpg' }
+};
+var SCREEN_TEXT = {
+  home:        { esLabel: 'Pantalla principal',   enLabel: 'Main screen',       esAlt: 'Pantalla principal',      enAlt: 'Home screen' },
+  sugerencias: { esLabel: 'Sugerencias IA',        enLabel: 'AI suggestions',    esAlt: 'Sugerencias de cenas',    enAlt: 'Dinner suggestions' },
+  detalle:     { esLabel: 'Detalle de receta',     enLabel: 'Recipe detail',     esAlt: 'Detalle de receta',       enAlt: 'Recipe detail' },
+  compras:     { esLabel: 'Lista de compras',      enLabel: 'Shopping list',     esAlt: 'Lista de compras',        enAlt: 'Shopping list' }
+};
+var SCREEN_COMING_SOON = { es: 'Captura próximamente', en: 'Screenshot coming soon' };
+
+function updateScreenshots(lang){
+  var comingSoon = SCREEN_COMING_SOON[lang] || SCREEN_COMING_SOON.es;
+  document.querySelectorAll('.qch-screen').forEach(function(img){
+    var key = img.getAttribute('data-key');
+    var icon = img.getAttribute('data-icon');
+    var files = SCREEN_FILES[key];
+    var text = SCREEN_TEXT[key];
+    if (!files || !text) return;
+    var src = files[lang] || files.es;
+    var label = lang === 'en' ? text.enLabel : text.esLabel;
+    var alt = lang === 'en' ? text.enAlt : text.esAlt;
+    img.alt = alt;
+    img.onerror = function(){
+      img.parentNode.innerHTML = phonePlaceholder(icon, label, comingSoon);
+    };
+    img.src = src;
+  });
+}
+
 var LANG={
   es:{
     heroTitle:'¿Qué hay para<br><em>comer?</em>',
@@ -405,6 +444,7 @@ function setLang(lang){
   document.querySelectorAll('a[href*="qch.com.ar/demo"]').forEach(function(a){
     a.href = 'https://www.qch.com.ar/demo?lang=' + lang;
   });
+  updateScreenshots(lang);
 }
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.15});
 document.querySelectorAll('.step').forEach(function(el){observer.observe(el);});
