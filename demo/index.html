@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Probá la demo — Que Comemos Hoy</title>
-<meta name="description" content="Probá cómo se planifican las cenas de la semana con Que Comemos Hoy — demo interactiva con datos de ejemplo.">
+<title>Probá la demo — ¿Qué hay para comer?</title>
+<meta name="description" content="Probá cómo se planifican las cenas de la semana con ¿Qué hay para comer? — demo interactiva con datos de ejemplo.">
 <link rel="canonical" href="https://www.qch.com.ar/demo">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -168,9 +168,9 @@ body {
 </div>
 
 <div class="page-header">
-  <a href="https://www.qch.com.ar" class="back-link" id="back-link">&larr; <span data-i18n="back">Volver a QCH</span></a>
+  <a href="https://www.qch.com.ar" class="back-link" id="back-link">&larr; <span data-i18n="back">Volver a QHC</span></a>
   <h1><em data-i18n="pageTitle">Probá la demo</em></h1>
-  <p data-i18n="pageDesc">Interactuá con datos de ejemplo — así se planifica una semana en QCH, de punta a punta.</p>
+  <p data-i18n="pageDesc">Interactuá con datos de ejemplo — así se planifica una semana en QHC, de punta a punta.</p>
 </div>
 
 <div class="phone-frame">
@@ -261,9 +261,9 @@ body {
 <script>
 var LANG = {
   es: {
-    back: 'Volver a QCH',
+    back: 'Volver a QHC',
     pageTitle: 'Probá la demo',
-    pageDesc: 'Interactuá con datos de ejemplo — así se planifica una semana en QCH, de punta a punta.',
+    pageDesc: 'Interactuá con datos de ejemplo — así se planifica una semana en QHC, de punta a punta.',
     phoneTitle: 'Elegí tu menú',
     demoHint: '👉 Deslizá para descartar, tocá el check para confirmar',
     demoCounterLabel: 'cenas elegidas',
@@ -286,9 +286,9 @@ var LANG = {
     mainCtaNote: 'Gratis para empezar. Sin tarjeta de crédito.',
   },
   en: {
-    back: 'Back to QCH',
+    back: 'Back to QHC',
     pageTitle: 'Try the demo',
-    pageDesc: 'Play with example data — this is exactly how you plan a week in QCH, start to finish.',
+    pageDesc: 'Play with example data — this is exactly how you plan a week in QHC, start to finish.',
     phoneTitle: 'Pick your menu',
     demoHint: '👉 Swipe to dismiss, tap the check to confirm',
     demoCounterLabel: 'dinners chosen',
@@ -319,7 +319,7 @@ function setLang(lang){
     if (LANG[lang] && LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
   });
   document.documentElement.lang = lang;
-  document.title = lang === 'en' ? 'Try the demo — Que Comemos Hoy' : 'Probá la demo — Que Comemos Hoy';
+  document.title = lang === 'en' ? 'Try the demo — ¿Qué hay para comer?' : 'Probá la demo — ¿Qué hay para comer?';
   // Igual que en legal.html: propagamos el idioma a los links de vuelta,
   // así si el usuario vuelve a la landing o entra a la app, no le arranca
   // de nuevo en español.
@@ -691,4 +691,5 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 </body>
 </html>
+
 
