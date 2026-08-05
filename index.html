@@ -180,6 +180,11 @@ footer a:hover { color: white; }
 .testimonial-author { font-weight: 700; font-size: 14px; color: var(--ink); }
 .testimonial-role { font-size: 12px; color: var(--muted); }
 
+/* --- SCREENSHOT TABS --- */
+.screen-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; margin-bottom: -16px; }
+.screen-tab { background: var(--warm-white); border: 1px solid var(--border); color: var(--muted); font-family: "DM Sans", sans-serif; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+.screen-tab.active, .screen-tab:hover { background: var(--terracotta); color: white; border-color: var(--terracotta); font-weight: 600; box-shadow: 0 2px 10px rgba(200,85,61,0.25); }
+
 /* --- FAQ ACCORDION --- */
 .faq-section { background: rgba(250,246,240,0.92); border-radius: 24px; text-align: center; }
 .faq-container { max-width: 720px; margin: 36px auto 0; text-align: left; display: flex; flex-direction: column; gap: 12px; }
@@ -237,6 +242,12 @@ footer a:hover { color: white; }
       <h2 class="section-title" data-i18n="screensTitle">Todo lo que necesitás<br><em>en una pantalla</em></h2>
       <div class="divider" style="margin:20px 0"></div>
       <p class="section-desc" data-i18n="screensDesc">Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.</p>
+      <div class="screen-tabs">
+        <button class="screen-tab active" onclick="scrollToScreen(0, this)"><span data-i18n="tabHome">🏠 Principal</span></button>
+        <button class="screen-tab" onclick="scrollToScreen(1, this)"><span data-i18n="tabSug">✨ Sugerencias</span></button>
+        <button class="screen-tab" onclick="scrollToScreen(2, this)"><span data-i18n="tabDet">📋 Receta</span></button>
+        <button class="screen-tab" onclick="scrollToScreen(3, this)"><span data-i18n="tabComp">🛒 Compras</span></button>
+      </div>
     </div>
     <div class="screenshots-scroll">
       <div class="phone-mock"><img class="qch-screen" data-key="home" data-icon="&#127968;" alt="Pantalla principal"></div>
@@ -413,6 +424,16 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
+function scrollToScreen(index, btn){
+  var scrollContainer = document.querySelector('.screenshots-scroll');
+  var mocks = document.querySelectorAll('.phone-mock');
+  if (mocks[index] && scrollContainer) {
+    scrollContainer.scrollTo({ left: mocks[index].offsetLeft - 24, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.screen-tab').forEach(function(b){ b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+}
+
 function toggleFaq(btn){
   var item = btn.parentNode;
   var isActive = item.classList.contains('active');
@@ -474,6 +495,7 @@ var LANG={
     demoTeaserBtn:'👉 Probar la demo interactiva',
     screensLabel:'La app, en tu celular',screensTitle:'Todo lo que necesitás<br><em>en una pantalla</em>',
     screensDesc:'Desde el perfil familiar hasta la lista de compras lista para el súper. Sin pasos de más.',
+    tabHome:'🏠 Principal',tabSug:'✨ Sugerencias',tabDet:'📋 Receta',tabComp:'🛒 Compras',
     howLabel:'Cómo funciona',howTitle:'Del caos al menú<br><em>en 2 minutos</em>',
     howDesc:'Sin pensar qué cocinar, sin repetir la semana anterior, sin olvidar las restricciones de cada uno.',
     step1num:'Paso 1',step1title:'Cargá tu familia',step1desc:'Integrantes, edades, dietas y restricciones. Una sola vez.',
@@ -521,6 +543,7 @@ var LANG={
     demoDesc:'Swipe to dismiss, tap the check to confirm, check out the recipe and build the shopping list — start to finish, with example data.',
     demoTeaserBtn:'👉 Try the interactive demo',
     screensDesc:'From family profiles to a ready-to-use shopping list. No extra steps.',
+    tabHome:'🏠 Main',tabSug:'✨ Suggestions',tabDet:'📋 Recipe',tabComp:'🛒 Shopping',
     howLabel:'How it works',howTitle:'From chaos to menu<br><em>in 2 minutes</em>',
     howDesc:'No more "what do we eat tonight?". No repeats. No forgotten dietary restrictions.',
     step1num:'Step 1',step1title:'Set up your family',step1desc:'Add members, ages, diets and restrictions. Just once.',
