@@ -169,6 +169,29 @@ footer a:hover { color: white; }
   .features-strip-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
   .social-strip { gap: 16px; }
 }
+
+/* --- TESTIMONIALS --- */
+.testimonials-section { text-align: center; background: rgba(255,253,249,0.92); border-radius: 24px; margin-top: 0; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 36px; text-align: left; }
+.testimonial-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(28,24,18,0.04); transition: transform 0.2s; }
+.testimonial-card:hover { transform: translateY(-3px); }
+.testimonial-stars { color: #F59E0B; margin-bottom: 12px; font-size: 14px; }
+.testimonial-quote { font-size: 14px; color: var(--ink); line-height: 1.6; font-style: italic; margin-bottom: 16px; flex-grow: 1; }
+.testimonial-author { font-weight: 700; font-size: 14px; color: var(--ink); }
+.testimonial-role { font-size: 12px; color: var(--muted); }
+
+/* --- FAQ ACCORDION --- */
+.faq-section { background: rgba(250,246,240,0.92); border-radius: 24px; text-align: center; }
+.faq-container { max-width: 720px; margin: 36px auto 0; text-align: left; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--warm-white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item.active { border-color: var(--terracotta); }
+.faq-question { width: 100%; padding: 20px 24px; background: none; border: none; font-family: "DM Sans", sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: color 0.2s; }
+.faq-question:hover { color: var(--terracotta); }
+.faq-icon { font-size: 18px; font-weight: 400; color: var(--terracotta); transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease; padding: 0 24px; }
+.faq-item.active .faq-answer { max-height: 200px; opacity: 1; padding: 0 24px 20px; }
+.faq-answer p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -254,6 +277,44 @@ footer a:hover { color: white; }
   </div>
 </div>
 
+<section class="testimonials-section">
+  <div class="section-label" data-i18n="testiLabel">Testimonios</div>
+  <h2 class="section-title" data-i18n="testiTitle">Lo que dicen las <em>familias</em></h2>
+  <div class="divider"></div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote" data-i18n="t1Text">"Antes perdíamos 20 minutos todas las noches discutiendo qué cenar. Ahora en 2 clics resolvemos la semana y compramos justo lo necesario."</p>
+      </div>
+      <div>
+        <div class="testimonial-author" data-i18n="t1Name">Carolina M.</div>
+        <div class="testimonial-role" data-i18n="t1Role">Mamá de 2 chicos (Buenos Aires)</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote" data-i18n="t2Text">"Tener la lista de compras armada automáticamente según el menú de la semana nos hizo ahorrar mucho tiempo y plata en el súper."</p>
+      </div>
+      <div>
+        <div class="testimonial-author" data-i18n="t2Name">Martín & Sofía</div>
+        <div class="testimonial-role" data-i18n="t2Role">Familia de 4 (Córdoba)</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div>
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote" data-i18n="t3Text">"Nos encanta que no repita los platos de la semana anterior. Las recetas son súper fáciles de seguir."</p>
+      </div>
+      <div>
+        <div class="testimonial-author" data-i18n="t3Name">Valeria G.</div>
+        <div class="testimonial-role" data-i18n="t3Role">Usuario desde la versión beta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="pricing-section">
   <div class="section-label" data-i18n="pricingLabel">Planes</div>
   <h2 class="section-title" data-i18n="pricingTitle">Simple y <em>transparente</em></h2>
@@ -289,6 +350,50 @@ footer a:hover { color: white; }
   </div>
 </section>
 
+<section class="faq-section">
+  <div class="section-label" data-i18n="faqLabel">Dudas frecuentes</div>
+  <h2 class="section-title" data-i18n="faqTitle">Todo lo que necesitás <em>saber</em></h2>
+  <div class="divider"></div>
+  <div class="faq-container">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-i18n="faqQ1">¿Cómo instalo la app en mi celular?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p data-i18n="faqA1">Entrás a app.qch.com.ar desde tu navegador (Chrome o Safari) y tocás en "Agregar a la pantalla de inicio" o "Instalar app". Funciona igual que una app descargada pero sin ocupar espacio de la tienda.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-i18n="faqQ2">¿Sirve para dietas especiales o restricciones alimentarias?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p data-i18n="faqA2">¡Sí! Al configurar tu perfil familiar podés especificar si hay integrantes celíacos, vegetarianos, intolerantes a la lactosa o ingredientes que no les gusten. La IA adaptará todas las sugerencias.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-i18n="faqQ3">¿Puedo usar la misma cuenta con mi pareja o familia?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p data-i18n="faqA3">Totalmente. Podés iniciar sesión con la misma cuenta en varios celulares para que cualquiera en casa vea el menú o la lista de compras en el súper.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-i18n="faqQ4">¿Cómo funciona la prueba gratuita?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p data-i18n="faqA4">Tenés 3 semanas completas con todas las funciones activas (recetas paso a paso y lista de compras sin restricciones), sin ingresar tarjeta de crédito ni compromisos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="cta-section">
   <section style="padding:0;max-width:640px;background:transparent;">
     <h2 class="section-title" data-i18n="ctaTitle">&#191;Qué cenamos<br><em>esta semana?</em></h2>
@@ -308,6 +413,13 @@ footer a:hover { color: white; }
 </footer>
 
 <script>
+function toggleFaq(btn){
+  var item = btn.parentNode;
+  var isActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('active'); });
+  if (!isActive) item.classList.add('active');
+}
+
 function phonePlaceholder(icon,label,comingSoon){return'<div class="phone-screen-placeholder"><div class="ph-icon">'+icon+'</div><div class="ph-title">'+label+'</div><div class="ph-label">'+comingSoon+'</div></div>';}
 
 // Capturas de pantalla bilingües. Convención de archivo: mismo nombre que
@@ -354,7 +466,7 @@ var LANG={
     heroSubtitle:'Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.',
     heroCta:'📲 Probalo gratis',heroNote:'Sin descargas ni registros complicados. <strong>Gratis para empezar.</strong>',
     scrollHint:'Deslizá para ver más',
-    proofPwa:'<strong>PWA instalable</strong> · sin App Store',proofAr:'<strong>Hecho en Argentina</strong>',
+    proofPwa:'<strong>App web instalable</strong> · sin App Store',proofAr:'<strong>Hecho en Argentina</strong>',
     proofAi:'<strong>Powered by Claude AI</strong>',proofFree:'<strong>3 semanas completas</strong> gratis para empezar',
     demoLabel:'Probalo vos mismo',
     demoTitle:'Así se eligen<br><em>las cenas</em>',
@@ -372,6 +484,18 @@ var LANG={
     feat2title:'Datos seguros',feat2desc:'Tu información se guarda en nuestra base de datos segura. Solo vos podés verla.',
     feat3title:'Historial inteligente',feat3desc:'Recuerda las semanas anteriores para no repetir los mismos platos.',
     feat4title:'Banco de recetas',feat4desc:'Cargá tus recetas favoritas y la IA las va a priorizar cada semana.',
+    testiLabel:'Testimonios',testiTitle:'Lo que dicen las <em>familias</em>',
+    t1Text:'"Antes perdíamos 20 minutos todas las noches discutiendo qué cenar. Ahora en 2 clics resolvemos la semana y compramos justo lo necesario."',
+    t1Name:'Carolina M.',t1Role:'Mamá de 2 chicos (Buenos Aires)',
+    t2Text:'"Tener la lista de compras armada automáticamente según el menú de la semana nos hizo ahorrar mucho tiempo y plata en el súper."',
+    t2Name:'Martín & Sofía',t2Role:'Familia de 4 (Córdoba)',
+    t3Text:'"Nos encanta que no repita los platos de la semana anterior. Las recetas son súper fáciles de seguir."',
+    t3Name:'Valeria G.',t3Role:'Usuario desde la versión beta',
+    faqLabel:'Dudas frecuentes',faqTitle:'Todo lo que necesitás <em>saber</em>',
+    faqQ1:'¿Cómo instalo la app en mi celular?',faqA1:'Entrás a app.qch.com.ar desde tu navegador (Chrome o Safari) y tocás en "Agregar a la pantalla de inicio" o "Instalar app". Funciona igual que una app descargada pero sin ocupar espacio de la tienda.',
+    faqQ2:'¿Sirve para dietas especiales o restricciones alimentarias?',faqA2:'¡Sí! Al configurar tu perfil familiar podés especificar si hay integrantes celíacos, vegetarianos, intolerantes a la lactosa o ingredientes que no les gusten. La IA adaptará todas las sugerencias.',
+    faqQ3:'¿Puedo usar la misma cuenta con mi pareja o familia?',faqA3:'Totalmente. Podés iniciar sesión con la misma cuenta en varios celulares para que cualquiera en casa vea el menú o la lista de compras en el súper.',
+    faqQ4:'¿Cómo funciona la prueba gratuita?',faqA4:'Tenés 3 semanas completas con todas las funciones activas (recetas paso a paso y lista de compras sin restricciones), sin ingresar tarjeta de crédito ni compromisos.',
     pricingLabel:'Planes',pricingTitle:'Simple y <em>transparente</em>',
     plan1name:'Gratis',plan1period:'Hasta 12 semanas gratis',
     plan1f1:'3 semanas con recetas completas',plan1f2:'Hasta 12 semanas solo con títulos',plan1f3:'Lista de compras (bloqueada)',
@@ -390,7 +514,7 @@ var LANG={
     heroSubtitle:'Plan your family\'s dinners for the whole week in seconds. Powered by AI, never repeating.',
     heroCta:'📲 Try it free',heroNote:'No complicated sign-ups. <strong>Free to start.</strong>',
     scrollHint:'Scroll to learn more',
-    proofPwa:'<strong>Installable PWA</strong> · no App Store',proofAr:'<strong>Made in Argentina</strong>',
+    proofPwa:'<strong>Installable Web App</strong> · no App Store',proofAr:'<strong>Made in Argentina</strong>',
     proofAi:'<strong>Powered by Claude AI</strong>',proofFree:'<strong>3 full weeks</strong> free to start',
     demoLabel:'Try it yourself',
     demoTitle:'This is how you<br>pick <em>dinners</em>',
@@ -407,6 +531,18 @@ var LANG={
     feat2title:'Your data is safe',feat2desc:'Your information is stored in our secure database. Only you can see it.',
     feat3title:'Smart history',feat3desc:'Remembers previous weeks so you never repeat the same meals.',
     feat4title:'Recipe bank',feat4desc:'Add your favorite recipes and AI will prioritize them every week.',
+    testiLabel:'Testimonials',testiTitle:'What families <em>say</em>',
+    t1Text:'"We used to waste 20 minutes every night arguing about what to eat. Now in 2 clicks we plan the whole week and buy only what we need."',
+    t1Name:'Caroline M.',t1Role:'Mom of 2 (Buenos Aires)',
+    t2Text:'"Having the shopping list automatically generated based on the weekly menu saved us so much time and money at the grocery store."',
+    t2Name:'Martin & Sophia',t2Role:'Family of 4 (Córdoba)',
+    t3Text:'"We love that it never repeats meals from the previous week. The recipes are super easy to follow."',
+    t3Name:'Valerie G.',t3Role:'Beta user',
+    faqLabel:'FAQ',faqTitle:'Everything you need <em>to know</em>',
+    faqQ1:'How do I install the app on my phone?',faqA1:'Open app.qch.com.ar in your browser (Chrome or Safari) and tap "Add to Home Screen" or "Install App". It works just like a native app without taking store space.',
+    faqQ2:'Does it support special diets or restrictions?',faqA2:'Yes! When setting up your family profile, you can specify gluten-free, vegetarian, lactose-intolerant, or disliked ingredients. The AI customizes all meal plans accordingly.',
+    faqQ3:'Can I share my account with my partner?',faqA3:'Absolutely. You can log into the same account across multiple phones so anyone at home can view the menu or check the grocery list.',
+    faqQ4:'How does the free trial work?',faqA4:'You get 3 full weeks with all features enabled (step-by-step recipes and unlocked shopping list) with no credit card required.',
     pricingLabel:'Pricing',pricingTitle:'Simple and <em>transparent</em>',
     plan1name:'Free',plan1period:'Up to 12 weeks free',
     plan1f1:'3 weeks with full recipes',plan1f2:'Up to 12 weeks with titles only',plan1f3:'Shopping list (locked)',
