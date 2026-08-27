@@ -204,6 +204,7 @@ footer a:hover { color: white; }
 <div class="lang-bar">
   <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
   <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
 </div>
 
 <div class="hero">
@@ -448,30 +449,30 @@ function phonePlaceholder(icon,label,comingSoon){return'<div class="phone-screen
 // placeholder oscuro con el label correcto en el idioma activo — no rompe
 // nada, simplemente indica "próximamente" hasta que subas la foto real.
 var SCREEN_FILES = {
-  home:         { es: 'screen-home.jpg',         en: 'screen-home-en.jpg' },
-  sugerencias:  { es: 'screen-sugerencias.jpg',  en: 'screen-sugerencias-en.jpg' },
-  detalle:      { es: 'screen-detalle.jpg',      en: 'screen-detalle-en.jpg' },
-  compras:      { es: 'screen-compras.jpg',      en: 'screen-compras-en.jpg' }
+  home:         { es: 'screen-home.jpg',         en: 'screen-home-en.jpg',         fr: 'screen-home-en.jpg' },
+  sugerencias:  { es: 'screen-sugerencias.jpg',  en: 'screen-sugerencias-en.jpg',  fr: 'screen-sugerencias-en.jpg' },
+  detalle:      { es: 'screen-detalle.jpg',      en: 'screen-detalle-en.jpg',      fr: 'screen-detalle-en.jpg' },
+  compras:      { es: 'screen-compras.jpg',      en: 'screen-compras-en.jpg',      fr: 'screen-compras-en.jpg' }
 };
 var SCREEN_TEXT = {
-  home:        { esLabel: 'Pantalla principal',   enLabel: 'Main screen',       esAlt: 'Pantalla principal',      enAlt: 'Home screen' },
-  sugerencias: { esLabel: 'Sugerencias IA',        enLabel: 'AI suggestions',    esAlt: 'Sugerencias de cenas',    enAlt: 'Dinner suggestions' },
-  detalle:     { esLabel: 'Detalle de receta',     enLabel: 'Recipe detail',     esAlt: 'Detalle de receta',       enAlt: 'Recipe detail' },
-  compras:     { esLabel: 'Lista de compras',      enLabel: 'Shopping list',     esAlt: 'Lista de compras',        enAlt: 'Shopping list' }
+  home:        { esLabel: 'Pantalla principal',   enLabel: 'Main screen',       frLabel: 'Écran principal',     esAlt: 'Pantalla principal',      enAlt: 'Home screen',       frAlt: 'Écran principal' },
+  sugerencias: { esLabel: 'Sugerencias IA',        enLabel: 'AI suggestions',    frLabel: 'Suggestions IA',      esAlt: 'Sugerencias de cenas',    enAlt: 'Dinner suggestions', frAlt: 'Suggestions de dîners' },
+  detalle:     { esLabel: 'Detalle de receta',     enLabel: 'Recipe detail',     frLabel: 'Détail de la recette',esAlt: 'Detalle de receta',       enAlt: 'Recipe detail',     frAlt: 'Détail de la recette' },
+  compras:     { esLabel: 'Lista de compras',      enLabel: 'Shopping list',     frLabel: 'Liste de courses',    esAlt: 'Lista de compras',        enAlt: 'Shopping list',     frAlt: 'Liste de courses' }
 };
-var SCREEN_COMING_SOON = { es: 'Captura próximamente', en: 'Screenshot coming soon' };
+var SCREEN_COMING_SOON = { es: 'Captura próximamente', en: 'Screenshot coming soon', fr: 'Capture à venir' };
 
 function updateScreenshots(lang){
-  var comingSoon = SCREEN_COMING_SOON[lang] || SCREEN_COMING_SOON.es;
+  var comingSoon = SCREEN_COMING_SOON[lang] || SCREEN_COMING_SOON.en;
   document.querySelectorAll('.qch-screen').forEach(function(img){
     var key = img.getAttribute('data-key');
     var icon = img.getAttribute('data-icon');
     var files = SCREEN_FILES[key];
     var text = SCREEN_TEXT[key];
     if (!files || !text) return;
-    var src = files[lang] || files.es;
-    var label = lang === 'en' ? text.enLabel : text.esLabel;
-    var alt = lang === 'en' ? text.enAlt : text.esAlt;
+    var src = files[lang] || files.en;
+    var label = lang === 'es' ? text.esLabel : (lang === 'fr' ? text.frLabel : text.enLabel);
+    var alt   = lang === 'es' ? text.esAlt   : (lang === 'fr' ? text.frAlt   : text.enAlt);
     img.alt = alt;
     img.onerror = function(){
       img.parentNode.innerHTML = phonePlaceholder(icon, label, comingSoon);
@@ -577,28 +578,68 @@ var LANG={
     ctaDesc:'Install the app on your phone in 30 seconds. No credit card required to start.',
     ctaBtn:'📲 Try it free',footerCopy:'© 2026 qch.com.ar · Made with ❤️ in Argentina',
     footerApp:'Open the app',footerLegal:'Terms & Privacy',
+  },
+  fr:{
+    heroTitle:'Qu\'est-ce qu\'on mange<br><em>ce soir ?</em>',
+    heroSubtitle:'Planifie les dîners de ta famille pour toute la semaine en quelques secondes. Avec l\'intelligence artificielle, sans jamais te répéter.',
+    heroCta:'📲 Essayer gratuitement',heroNote:'Sans téléchargement compliqué. <strong>Gratuit pour commencer.</strong>',
+    scrollHint:'Fais défiler pour en savoir plus',
+    proofPwa:'<strong>App web installable</strong> · sans App Store',proofAr:'<strong>Fait en Argentine</strong>',
+    proofAi:'<strong>Propulsé par Claude AI</strong>',proofFree:'<strong>1ère semaine complète</strong> gratuite pour commencer',
+    demoLabel:'Essaie toi-même',
+    demoTitle:'Voici comment<br>choisir <em>les dîners</em>',
+    demoDesc:'Glisse pour ignorer, appuie sur la coche pour confirmer, consulte la recette et construis la liste de courses — de bout en bout, avec des données d\'exemple.',
+    demoTeaserBtn:'👉 Essayer la démo interactive',
+    screensLabel:'L\'app, sur ton téléphone',screensTitle:'Tout ce qu\'il te faut<br><em>en un écran</em>',
+    screensDesc:'Du profil familial à la liste de courses prête pour le supermarché. Sans étapes inutiles.',
+    tabHome:'🏠 Principal',tabSug:'✨ Suggestions',tabDet:'📋 Recette',tabComp:'🛒 Courses',
+    howLabel:'Comment ça marche',howTitle:'Du chaos au menu<br><em>en 2 minutes</em>',
+    howDesc:'Fini le « qu\'est-ce qu\'on mange ce soir ? ». Pas de répétitions. Pas de restrictions oubliées.',
+    step1num:'Étape 1',step1title:'Configure ta famille',step1desc:'Membres, âges, régimes et restrictions. Une seule fois.',
+    step2num:'Étape 2',step2title:'L\'IA suggère des dîners',step2desc:'Suggestions personnalisées pour la semaine, avec ingrédients et instructions étape par étape.',
+    step3num:'Étape 3',step3title:'Choisis ce que tu veux',step3desc:'Glisse pour ignorer, confirme ceux que tu aimes. C\'est toi qui décides.',
+    step4num:'Étape 4',step4title:'Liste de courses prête',step4desc:'Ingrédients groupés par catégorie, prêts pour le supermarché.',
+    feat1title:'PWA installable',feat1desc:'S\'installe depuis le navigateur, sans App Store. Fonctionne hors ligne.',
+    feat2title:'Tes données sont sécurisées',feat2desc:'Tes informations sont stockées dans notre base de données sécurisée. Toi seul peux les voir.',
+    feat3title:'Historique intelligent',feat3desc:'Se souvient des semaines précédentes pour ne jamais répéter les mêmes plats.',
+    feat4title:'Banque de recettes',feat4desc:'Ajoute tes recettes préférées et l\'IA les priorisera chaque semaine.',
+    testiLabel:'Témoignages',testiTitle:'Ce que disent les <em>familles</em>',
+    t1Text:'"Avant on perdait 20 minutes chaque soir à discuter quoi manger. Maintenant en 2 clics on planifie toute la semaine et on achète juste ce qu\'il faut."',
+    t1Name:'Caroline M.',t1Role:'Maman de 2 enfants (Buenos Aires)',
+    t2Text:'"Avoir la liste de courses générée automatiquement selon le menu de la semaine nous a fait gagner beaucoup de temps et d\'argent au supermarché."',
+    t2Name:'Martin & Sophie',t2Role:'Famille de 4 (Córdoba)',
+    t3Text:'"On adore qu\'il ne répète jamais les plats de la semaine précédente. Les recettes sont super faciles à suivre."',
+    t3Name:'Valérie G.',t3Role:'Utilisatrice depuis la version bêta',
+    faqLabel:'Questions fréquentes',faqTitle:'Tout ce que tu as besoin <em>de savoir</em>',
+    faqQ1:'Comment installer l\'app sur mon téléphone ?',faqA1:'Ouvre app.qch.com.ar dans ton navigateur (Chrome ou Safari) et appuie sur « Ajouter à l\'écran d\'accueil » ou « Installer l\'app ». Ça fonctionne comme une app native sans prendre de place dans le store.',
+    faqQ2:'Est-ce que ça prend en charge les régimes spéciaux ou les restrictions ?',faqA2:'Oui ! En configurant ton profil familial, tu peux spécifier les membres sans gluten, végétariens, intolérants au lactose ou les ingrédients qu\'ils n\'aiment pas. L\'IA adaptera toutes les suggestions.',
+    faqQ3:'Puis-je partager mon compte avec mon partenaire ?',faqA3:'Tout à fait. Tu peux te connecter avec le même compte sur plusieurs téléphones pour que n\'importe qui à la maison puisse voir le menu ou vérifier la liste de courses.',
+    faqQ4:'Comment fonctionne l\'essai gratuit ?',faqA4:'À l\'inscription tu bénéficies d\'<strong>1 semaine complète gratuite</strong> avec toutes les fonctions actives : suggestions, recettes étape par étape et liste de courses, plus 2 utilisations gratuites de « Qu\'est-ce que j\'ai dans le frigo ? ». Et si tu as un code d\'invitation d\'un ami, tu reçois 3 semaines complètes gratuites !',
+    pricingLabel:'Tarifs',pricingTitle:'Simple et <em>transparent</em>',
+    plan1name:'Gratuit',plan1period:'1ère semaine complète gratuite',
+    plan1f1:'1ère semaine avec recettes complètes et liste de courses',plan1f2:'Sans carte de crédit pour commencer',plan1f3:'2 utilisations gratuites de « Qu\'est-ce que j\'ai dans le frigo ? »',
+    plan1f4:'Dîners illimités (Plan Famille)',plan1cta:'Commencer gratuitement',
+    featuredBadge:'Le plus populaire',plan2name:'Famille',plan2period:'Résiliation à tout moment',
+    plan2price:'USD 6,99<span style="font-size:16px;font-weight:400;color:var(--muted);font-family:\'DM Sans\',sans-serif"> /mois</span>',
+    plan2f1:'Dîners illimités',plan2f2:'Liste de courses débloquée',plan2f3:'Historique complet',
+    plan2f4:'Banque de recettes illimitée',plan2f5:'Rappels hebdomadaires',plan2cta:'Commencer →',
+    ctaTitle:'Qu\'est-ce qu\'on mange<br><em>cette semaine ?</em>',
+    ctaDesc:'Installe l\'app sur ton téléphone en 30 secondes. Sans carte de crédit pour commencer.',
+    ctaBtn:'📲 Essayer gratuitement',footerCopy:'© 2026 qch.com.ar · Fait avec ❤️ en Argentine',
+    footerApp:'Ouvrir l\'app',footerLegal:'Conditions et confidentialité',
   }
 };
 function setLang(lang){
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===lang);});
-  document.querySelectorAll('[data-i18n]').forEach(function(el){var key=el.getAttribute('data-i18n');if(LANG[lang]&&LANG[lang][key]!==undefined)el.innerHTML=LANG[lang][key];});
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var key=el.getAttribute('data-i18n');if(LANG[lang]&&LANG[lang][key]!==undefined)el.innerHTML=LANG[lang][key];else if(LANG['en']&&LANG['en'][key]!==undefined)el.innerHTML=LANG['en'][key];});
   document.documentElement.lang=lang;
   localStorage.setItem('qch_landing_lang',lang);
-  // Pasar el idioma a la app: app.qch.com.ar es otro dominio y no comparte
-  // localStorage, así que sin esto la app siempre arrancaba en 'es' aunque
-  // el usuario haya navegado la landing en inglés (afectaba incluso el TOS).
   document.querySelectorAll('a[href^="https://app.qch.com.ar"]').forEach(function(a){
     a.href = 'https://app.qch.com.ar/?lang=' + lang;
   });
-  // Mismo problema pasaba con el link de legales: la página /legal tiene su
-  // propio setLang() que ANTES solo miraba navigator.language, ignorando
-  // este parámetro. Ya está corregido del lado de legal.html también.
   document.querySelectorAll('a[href*="qch.com.ar/legal"]').forEach(function(a){
     a.href = 'https://www.qch.com.ar/legal?lang=' + lang;
   });
-  // La demo ahora vive en su propia página (qch.com.ar/demo) para que no
-  // compita con el scroll de la landing; le pasamos el idioma igual que al
-  // resto de los links de salida.
   document.querySelectorAll('a[href*="qch.com.ar/demo"]').forEach(function(a){
     a.href = 'https://www.qch.com.ar/demo?lang=' + lang;
   });
@@ -606,8 +647,14 @@ function setLang(lang){
 }
 var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.15});
 document.querySelectorAll('.step').forEach(function(el){observer.observe(el);});
-setLang(localStorage.getItem('qch_landing_lang')||(navigator.language&&navigator.language.toLowerCase().indexOf('es')===0?'es':'en'));
+// Auto-detect: URL param → localStorage → browser (detecta fr-CH, fr-FR, fr-BE, fr-CA)
+(function(){
+  var stored = localStorage.getItem('qch_landing_lang');
+  var urlParam = new URLSearchParams(window.location.search).get('lang');
+  var nav = (navigator.language || '').toLowerCase();
+  var detected = nav.startsWith('fr') ? 'fr' : (nav.startsWith('es') ? 'es' : 'en');
+  setLang(urlParam && LANG[urlParam] ? urlParam : (stored && LANG[stored] ? stored : detected));
+})();
 </script>
 </body>
 </html>
-
