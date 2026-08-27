@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -231,6 +229,7 @@ body {
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
   <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+  <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">FR</button>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -586,6 +585,98 @@ const i18n = {
 
     footer_1: '© 2026 ¿Qué hay para comer? All rights reserved.',
     footer_link: '← Back to home',
+  },
+  fr: {
+    back: 'Retour à QHC',
+    title_em: '¿Qué hay para comer?',
+    subtitle: 'Conditions d\'utilisation &amp; Politique de confidentialité',
+    updated: 'Mis à jour : juin 2026',
+    nav_terms: 'Conditions d\'utilisation',
+    nav_privacy: 'Confidentialité',
+    nav_payments: 'Paiements',
+    nav_contact: 'Contact',
+
+    tos_title: 'Conditions d\'utilisation',
+    tos_intro: '<strong>Résumé :</strong> QHC est un planificateur de dîners familial avec IA. En l\'utilisant, tu acceptes ces conditions. Des questions ? Écris-nous.',
+    tos_s1_h: '1. Le service',
+    tos_s1_p: '¿Qué hay para comer? (« QHC », « le service ») est une application web progressive (PWA) qui utilise l\'intelligence artificielle pour suggérer des dîners hebdomadaires personnalisés selon les préférences et restrictions alimentaires de chaque famille. Le service est opéré par Javier Ramírez, domicilié à Buenos Aires, Argentine.',
+    tos_s2_h: '2. Acceptation',
+    tos_s2_p: 'En accédant à QHC et en l\'utilisant, tu acceptes ces Conditions d\'utilisation. Si tu n\'es pas d\'accord, merci de ne pas utiliser le service. L\'utilisation continue après des modifications de ces conditions implique l\'acceptation des changements.',
+    tos_s3_h: '3. Compte et accès',
+    tos_s3_1: 'L\'accès requiert une authentification avec un compte Google.',
+    tos_s3_2: 'Tu es responsable de la sécurité de ton compte.',
+    tos_s3_3: 'Tu peux avoir un seul compte par adresse e-mail.',
+    tos_s3_4: 'Nous nous réservons le droit de suspendre les comptes qui enfreignent ces conditions.',
+    tos_s4_h: '4. Plan gratuit et limites',
+    tos_s4_p: 'Le plan gratuit permet jusqu\'à 7 dîners planifiés par mois calendaire. Une fois cette limite atteinte, le service est restreint jusqu\'au mois suivant ou jusqu\'à l\'activation du Plan Famille.',
+    tos_s5_h: '5. Utilisation acceptable',
+    tos_s5_1: 'Utiliser le service pour la planification des repas domestique et personnelle.',
+    tos_s5_2: 'Ne pas automatiser des requêtes massives vers l\'API.',
+    tos_s5_3: 'Ne pas tenter d\'accéder aux données d\'autres utilisateurs.',
+    tos_s5_4: 'Ne pas utiliser le service à des fins commerciales sans autorisation préalable.',
+    tos_s6_h: '6. Suggestions de l\'IA',
+    tos_s6_box: 'Les suggestions générées par l\'intelligence artificielle sont indicatives. QHC n\'est pas un service médical ou nutritionnel. Pour des restrictions alimentaires graves ou des conditions de santé, consulte un professionnel.',
+    tos_s7_h: '7. Disponibilité',
+    tos_s7_p: 'Nous nous efforçons de maintenir le service disponible en permanence, mais ne garantissons pas un uptime de 100 %. Nous pouvons effectuer des maintenances programmées ou non, et ne sommes pas responsables des pertes résultant d\'interruptions de service.',
+    tos_s8_h: '8. Modifications et résiliation',
+    tos_s8_p: 'Nous pouvons modifier ou interrompre le service à tout moment. Nous te notifierons des changements importants au moins 15 jours à l\'avance par e-mail. Tu peux supprimer ton compte et tes données à tout moment en nous contactant.',
+
+    pp_title: 'Politique de confidentialité',
+    pp_intro: '<strong>Résumé :</strong> Nous conservons le minimum de données nécessaires au fonctionnement du service. Nous ne vendons jamais tes données. Jamais.',
+    pp_s1_h: '1. Données que nous collectons',
+    pp_s1_1: '<strong>E-mail et nom :</strong> obtenus depuis ton compte Google à la connexion.',
+    pp_s1_2: '<strong>Données de famille :</strong> noms, âges, régimes et restrictions que tu saisis volontairement.',
+    pp_s1_3: '<strong>Historique des dîners :</strong> les planifications hebdomadaires et listes de courses générées.',
+    pp_s1_4: '<strong>Données d\'utilisation :</strong> nombre de planifications par mois, abonnement actif.',
+    pp_s1_5: '<strong>Données de paiement :</strong> e-mail et statut de transaction. Nous ne stockons pas les données de carte.',
+    pp_s2_h: '2. Comment nous utilisons tes données',
+    pp_s2_1: 'Fournir et personnaliser les suggestions de dîners.',
+    pp_s2_2: 'Gérer ton compte, ton abonnement et tes limites d\'utilisation.',
+    pp_s2_3: 'T\'envoyer des notifications push hebdomadaires (uniquement si tu les as activées).',
+    pp_s2_4: 'Traiter et vérifier les paiements.',
+    pp_s2_5: 'Améliorer le service (sous forme agrégée et anonyme).',
+    pp_s3_h: '3. Partage de données',
+    pp_s3_p: 'Nous ne vendons ni ne partageons tes données personnelles avec des tiers, sauf avec les prestataires d\'infrastructure nécessaires au fonctionnement du service :',
+    pp_s3_1: '<strong>Cloudflare :</strong> hébergement, base de données D1 et workers (serveurs US/UE).',
+    pp_s3_2: '<strong>Google :</strong> authentification OAuth2 et IA (API Gemini).',
+    pp_s3_3: '<strong>MercadoPago :</strong> traitement des paiements en pesos argentins.',
+    pp_s3_4: '<strong>Paddle :</strong> traitement des paiements internationaux en USD.',
+    pp_s4_h: '4. Conservation des données',
+    pp_s4_p: 'Nous conservons tes données tant que ton compte est actif. Si tu supprimes ton compte, nous supprimons toutes tes données dans les 30 jours suivant ta demande.',
+    pp_s5_h: '5. Tes droits',
+    pp_s5_1: '<strong>Accès :</strong> tu peux demander une copie de tes données.',
+    pp_s5_2: '<strong>Rectification :</strong> tu peux modifier tes données directement dans l\'application.',
+    pp_s5_3: '<strong>Suppression :</strong> tu peux demander la suppression totale de ton compte et de tes données.',
+    pp_s5_4: '<strong>Portabilité :</strong> tu peux demander tes données dans un format lisible.',
+    pp_s5_contact: 'Pour exercer ces droits, écris-nous à <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>.',
+    pp_s6_h: '6. Cookies et stockage local',
+    pp_s6_p: 'QHC utilise le <code>localStorage</code> du navigateur pour sauvegarder ta session active (token Google) et tes préférences de langue. Nous n\'utilisons pas de cookies de suivi ni de publicité tierce.',
+    pp_s7_h: '7. Sécurité',
+    pp_s7_p: 'Toute communication entre le frontend et le serveur se fait via HTTPS. Les tokens d\'authentification sont vérifiés à chaque requête. La base de données est hébergée sur l\'infrastructure Cloudflare avec un accès restreint.',
+    pp_s8_h: '8. Mineurs',
+    pp_s8_p: 'QHC est conçu pour être utilisé par des adultes. Nous ne collectons pas directement de données de mineurs de moins de 13 ans. Les données des membres mineurs de la famille sont saisies par l\'adulte responsable du compte.',
+
+    pay_title: 'Politique de paiement',
+    pay_s1_h: '1. Plan Famille',
+    pay_s1_p: 'Le Plan Famille permet des planifications illimitées pendant 30 jours à compter de la date de paiement. Le prix varie selon la devise :',
+    pay_s1_1: '<strong>Argentine (ARS) :</strong> 7 860 pesos par mois (TVA incluse), via MercadoPago.',
+    pay_s1_2: '<strong>International (USD) :</strong> 5,99 USD par mois, via Paddle.',
+    pay_s2_h: '2. Renouvellement',
+    pay_s2_p: 'L\'abonnement ne se renouvelle pas automatiquement. À l\'expiration de la période, le compte revient au plan gratuit. Pour continuer, tu dois effectuer un nouveau paiement.',
+    pay_s3_h: '3. Remboursements',
+    pay_s3_p: 'Si le service présente des défaillances graves empêchant son utilisation pendant la période payée, tu peux demander un remboursement total dans les 14 jours suivant le paiement en nous écrivant à <a href="mailto:hola@qch.com.ar">hola@qch.com.ar</a>. Nous évaluons chaque cas individuellement.',
+    pay_box: 'Nous ne stockons pas de données de carte. Les paiements sont traités directement par MercadoPago ou Paddle, selon leurs propres politiques de sécurité.',
+    pay_s4_h: '4. Tarifs',
+    pay_s4_p: 'Les tarifs peuvent être mis à jour périodiquement. Nous te notifierons des changements par e-mail au moins 15 jours à l\'avance. Le tarif en vigueur au moment du paiement est le tarif applicable.',
+
+    contact_title: 'Contact',
+    contact_p: 'Pour toute question sur ces conditions, demande de données ou autre question juridique :',
+    contact_li2: '<strong>Responsable :</strong> Javier Ramírez',
+    contact_li3: '<strong>Adresse :</strong> Buenos Aires, Argentine',
+    contact_box: 'Nous répondons aux demandes dans un délai maximum de 72 heures ouvrables.',
+
+    footer_1: '© 2026 ¿Qué hay para comer? Tous droits réservés.',
+    footer_link: '← Retour à l\'accueil',
   }
 };
 
@@ -596,22 +687,28 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
 
-  const t = i18n[lang];
+  const t = i18n[lang] || i18n.en;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
 
   // Update page title
-  document.title = lang === 'en'
-    ? 'Terms & Privacy — ¿Qué hay para comer?'
-    : 'Términos y Privacidad — ¿Qué hay para comer?';
+  const titles = { es: 'Términos y Privacidad', en: 'Terms & Privacy', fr: 'Conditions et confidentialité' };
+  document.title = (titles[lang] || titles.en) + ' — ¿Qué hay para comer?';
+  localStorage.setItem('qch_legal_lang', lang);
 }
 
-// Detect browser language
-const browserLang = (navigator.language || '').startsWith('en') ? 'en' : 'es';
-setLang(browserLang);
+// Detect language: URL param → localStorage → browser
+(function() {
+  var stored = localStorage.getItem('qch_legal_lang');
+  var urlParam = new URLSearchParams(window.location.search).get('lang');
+  var nav = (navigator.language || '').toLowerCase();
+  var detected = nav.startsWith('fr') ? 'fr' : (nav.startsWith('en') ? 'en' : 'es');
+  setLang(urlParam && i18n[urlParam] ? urlParam : (stored && i18n[stored] ? stored : detected));
+})();
 
 // Highlight active nav tab on scroll
 const sections = document.querySelectorAll('.legal-section');
@@ -629,6 +726,3 @@ sections.forEach(s => observer.observe(s));
 </script>
 </body>
 </html>
-
-
-
