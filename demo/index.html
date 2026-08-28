@@ -432,6 +432,7 @@ var DEMO_CAT_LABEL = {
 };
 
 var demoLang = 'es';
+var demoUiLang = 'es'; // idioma de la UI (es/en/fr) — separado del idioma de los datos
 var demoIdx = 0;
 var demoElegidas = [];
 var demoCurrentSubview = 'widget'; // 'widget' | 'elegidas' | 'detalle' | 'compras'
@@ -442,8 +443,9 @@ function demoRenderStack(){
   var stack = document.getElementById('demo-stack');
   if (!stack) return;
   stack.innerHTML = '';
-  var lang = demoCurrentLang();
-  var cenas = DEMO_CENAS[lang];
+  var dataLang = demoCurrentLang(); // idioma de los datos (es/en)
+  var uiLang   = demoUiLang;        // idioma de la UI (es/en/fr) — para hint y strings
+  var cenas = DEMO_CENAS[dataLang];
   var counterNum = document.getElementById('demo-counter-num');
   if (counterNum) counterNum.textContent = demoElegidas.length + ' / ' + cenas.length;
 
@@ -464,7 +466,7 @@ function demoRenderStack(){
 function demoBuildCard(cena, lang){
   var card = document.createElement('div');
   card.className = 'demo-card';
-  var hint = lang === 'en' ? 'swipe to dismiss &rarr;' : (lang === 'fr' ? 'glisse pour ignorer &rarr;' : '&larr; deslizá para descartar');
+  var hint = uiLang === 'en' ? 'swipe to dismiss &rarr;' : (uiLang === 'fr' ? 'glisse pour ignorer &rarr;' : '&larr; deslizá para descartar');
   card.innerHTML =
     '<div class="demo-check">&#10003;</div>' +
     '<div class="demo-card-title">' + cena.t + '</div>' +
@@ -538,20 +540,22 @@ function demoSwitchView(name){
 function demoUpdatePhoneChrome(){
   // Actualiza el título del header falso según en qué paso está el usuario,
   // igual que iría cambiando el header real de la app.
-  var lang = demoCurrentLang();
+  var lang = demoUiLang; // idioma de la UI, no el de los datos
   var title = document.getElementById('phone-title');
   if (!title) return;
   var titles = {
-    es: { widget: 'Elegí tu menú', elegidas: 'Tus cenas', detalle: 'Detalle de receta', compras: 'Lista de compras' },
-    en: { widget: 'Pick your menu', elegidas: 'Your dinners', detalle: 'Recipe detail', compras: 'Shopping list' }
+    es: { widget: 'Elegí tu menú',    elegidas: 'Tus cenas',      detalle: 'Detalle de receta', compras: 'Lista de compras' },
+    en: { widget: 'Pick your menu',   elegidas: 'Your dinners',   detalle: 'Recipe detail',     compras: 'Shopping list' },
+    fr: { widget: 'Choisis ton menu', elegidas: 'Tes dîners',     detalle: 'Détail de la recette', compras: 'Liste de courses' }
   };
-  title.textContent = titles[lang][demoCurrentSubview] || titles[lang].widget;
+  var t = titles[lang] || titles.en;
+  title.textContent = t[demoCurrentSubview] || t.widget;
 }
 
 function demoGoBack(){
   if (demoCurrentSubview === 'detalle') { demoShowElegidasView(); return; }
   if (demoCurrentSubview === 'compras' && demoElegidas.length > 0) { demoShowElegidasView(); return; }
-  window.location.href = 'https://www.qch.com.ar/?lang=' + demoCurrentLang();
+  window.location.href = 'https://www.qch.com.ar/?lang=' + demoUiLang;
 }
 
 function demoShowResult(){
@@ -565,8 +569,9 @@ function demoShowResult(){
 
 function demoShowElegidasView(){
   demoSwitchView('elegidas');
-  var lang = demoCurrentLang();
-  var cenas = DEMO_CENAS[lang];
+  var dataLang = demoCurrentLang();
+  var lang = demoUiLang; // UI lang para strings de la vista
+  var cenas = DEMO_CENAS[dataLang];
   var listEl = document.getElementById('demo-elegidas-list');
   if (!listEl) return;
   listEl.innerHTML = '';
@@ -586,12 +591,13 @@ function demoShowElegidasView(){
 
 function demoShowDetalleView(i){
   demoSwitchView('detalle');
-  var lang = demoCurrentLang();
-  var cena = DEMO_CENAS[lang][i];
+  var dataLang = demoCurrentLang();
+  var uiLang   = demoUiLang;
+  var cena = DEMO_CENAS[dataLang][i];
   var card = document.getElementById('demo-detalle-card');
   if (!card) return;
-  var ingLabel   = lang === 'en' ? 'Ingredients' : (lang === 'fr' ? 'Ingrédients' : 'Ingredientes');
-  var pasosLabel = lang === 'en' ? 'Steps'       : (lang === 'fr' ? 'Préparation' : 'Preparación');
+  var ingLabel   = uiLang === 'en' ? 'Ingredients' : (uiLang === 'fr' ? 'Ingrédients' : 'Ingredientes');
+  var pasosLabel = uiLang === 'en' ? 'Steps'       : (uiLang === 'fr' ? 'Préparation' : 'Preparación');
   var ingHtml = cena.ingFull.map(function(ing){ return '<li>' + ing + '</li>'; }).join('');
   var pasosHtml = cena.pasos.map(function(p, idx){
     return '<li><span class="demo-paso-num">' + (idx + 1) + '</span><span>' + p + '</span></li>';
@@ -608,7 +614,7 @@ function demoShowDetalleView(i){
 
 function demoShowComprasView(){
   demoSwitchView('compras');
-  var lang = demoCurrentLang();
+  var lang = demoCurrentLang(); // data lang para los items
   var cenas = DEMO_CENAS[lang];
   var listEl = document.getElementById('demo-shopping-list');
   var descEl = document.getElementById('demo-result-desc');
@@ -659,7 +665,7 @@ function demoShareWhatsapp(){
     if (overlay) overlay.classList.remove('show');
     return;
   }
-  var lang = demoCurrentLang();
+  var lang = demoUiLang; // UI lang para el header
   var header = lang === 'en' ? '🛒 My shopping list:' : (lang === 'fr' ? '🛒 Ma liste de courses :' : '🛒 Mi lista de compras:');
   var lines = checked.map(function(c){ return '• ' + c.getAttribute('data-name'); });
   if (bubble) bubble.textContent = header + '\n' + lines.join('\n');
@@ -684,8 +690,8 @@ function demoRestart(){
 }
 
 function demoSetLang(lang){
-  // FR usa los datos de ejemplo en inglés (no hay DEMO_CENAS.fr todavía)
-  demoLang = (lang === 'es') ? 'es' : 'en';
+  demoUiLang = lang;                        // idioma de la UI (fr/en/es)
+  demoLang = (lang === 'es') ? 'es' : 'en'; // idioma de los datos (FR usa EN)
   demoRestart();
 }
 
