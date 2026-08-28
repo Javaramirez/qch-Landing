@@ -165,6 +165,7 @@ body {
 <div class="lang-bar">
   <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
   <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+  <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">FR</button>
 </div>
 
 <div class="page-header">
@@ -309,6 +310,31 @@ var LANG = {
     demoWaSheetTitle: "Here's what sharing looks like",
     mainCta: '📲 Create my free account',
     mainCtaNote: 'Free to start. No credit card required.',
+  },
+  fr: {
+    back: 'Retour à QHC',
+    pageTitle: 'Essaie la démo',
+    pageDesc: 'Interagis avec des données d\'exemple — c\'est exactement comme ça qu\'on planifie une semaine dans QHC, de bout en bout.',
+    phoneTitle: 'Choisis ton menu',
+    demoHint: '👉 Glisse pour ignorer, appuie sur la coche pour confirmer',
+    demoCounterLabel: 'dîners choisis',
+    demoRegen: 'Aucun ne me plaît — en générer d\'autres',
+    demoRegenMsg: '✨ Dans l\'app réelle, l\'IA génère ça instantanément',
+    demoElegidasTitle: 'Tu as choisi tes dîners !',
+    demoElegidasDesc: 'Appuie sur un pour voir la recette complète, avec les étapes et l\'adaptation pour ta famille.',
+    demoVerCompras: '🛒 Voir la liste de courses →',
+    demoVolver: '← Retour à mes dîners',
+    demoResultTitle: 'Ta liste de courses, prête !',
+    demoResultDesc: 'Ça a pris moins d\'une minute. Avec ta vraie famille, c\'est tout aussi simple — et l\'IA s\'adapte à chaque membre.',
+    demoResultEmptyDesc: 'Tu as ignoré les 5 — pas de souci. Avec ta vraie famille tu auras beaucoup plus d\'options parmi lesquelles choisir.',
+    demoCta: '📲 Créer mon compte gratuitement',
+    demoRestart: '↺ Recommencer',
+    demoShareBtn: 'Partager sur WhatsApp',
+    demoShareEmpty: 'Coche d\'abord les articles que tu veux partager',
+    demoWaHint: 'Voici à quoi ça ressemble quand tu partages vraiment',
+    demoWaSheetTitle: 'Voici à quoi ressemble le partage',
+    mainCta: '📲 Créer mon compte gratuitement',
+    mainCtaNote: 'Gratuit pour commencer. Sans carte de crédit.',
   }
 };
 
@@ -319,7 +345,7 @@ function setLang(lang){
     if (LANG[lang] && LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
   });
   document.documentElement.lang = lang;
-  document.title = lang === 'en' ? 'Try the demo — ¿Qué hay para comer?' : 'Probá la demo — ¿Qué hay para comer?';
+  document.title = lang === 'fr' ? 'Essaie la démo — ¿Qué hay para comer?' : (lang === 'en' ? 'Try the demo — ¿Qué hay para comer?' : 'Probá la demo — ¿Qué hay para comer?');
   // Igual que en legal.html: propagamos el idioma a los links de vuelta,
   // así si el usuario vuelve a la landing o entra a la app, no le arranca
   // de nuevo en español.
@@ -334,8 +360,11 @@ function setLang(lang){
 // Idioma: primero ?lang= de la URL (viene de la landing), si no, el navegador.
 var urlParams = new URLSearchParams(window.location.search);
 var langParam = urlParams.get('lang');
-var browserLang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
-var initialLang = (langParam === 'en' || langParam === 'es') ? langParam : browserLang;
+var browserLang = (function(){
+  var nav = (navigator.language || '').toLowerCase();
+  return nav.startsWith('fr') ? 'fr' : (nav.startsWith('en') ? 'en' : 'es');
+})();
+var initialLang = (langParam === 'en' || langParam === 'es' || langParam === 'fr') ? langParam : browserLang;
 
 // ══════════════════════════════════════════════════════════════
 //  DEMO INTERACTIVA — swipe de cenas de ejemplo (sin costo IA)
@@ -435,7 +464,7 @@ function demoRenderStack(){
 function demoBuildCard(cena, lang){
   var card = document.createElement('div');
   card.className = 'demo-card';
-  var hint = lang === 'en' ? 'swipe to dismiss &rarr;' : '&larr; deslizá para descartar';
+  var hint = lang === 'en' ? 'swipe to dismiss &rarr;' : (lang === 'fr' ? 'glisse pour ignorer &rarr;' : '&larr; deslizá para descartar');
   card.innerHTML =
     '<div class="demo-check">&#10003;</div>' +
     '<div class="demo-card-title">' + cena.t + '</div>' +
@@ -561,8 +590,8 @@ function demoShowDetalleView(i){
   var cena = DEMO_CENAS[lang][i];
   var card = document.getElementById('demo-detalle-card');
   if (!card) return;
-  var ingLabel = lang === 'en' ? 'Ingredients' : 'Ingredientes';
-  var pasosLabel = lang === 'en' ? 'Steps' : 'Preparación';
+  var ingLabel   = lang === 'en' ? 'Ingredients' : (lang === 'fr' ? 'Ingrédients' : 'Ingredientes');
+  var pasosLabel = lang === 'en' ? 'Steps'       : (lang === 'fr' ? 'Préparation' : 'Preparación');
   var ingHtml = cena.ingFull.map(function(ing){ return '<li>' + ing + '</li>'; }).join('');
   var pasosHtml = cena.pasos.map(function(p, idx){
     return '<li><span class="demo-paso-num">' + (idx + 1) + '</span><span>' + p + '</span></li>';
@@ -589,7 +618,7 @@ function demoShowComprasView(){
     if (descEl) descEl.textContent = (LANG[lang] && LANG[lang].demoResultEmptyDesc) || '';
     var li = document.createElement('li');
     li.className = 'demo-shopping-item';
-    li.textContent = lang === 'en' ? 'No dinners selected — try again!' : 'No elegiste ninguna cena — ¡probá de nuevo!';
+    li.textContent = lang === 'en' ? 'No dinners selected — try again!' : (lang === 'fr' ? 'Aucun dîner sélectionné — réessaie !' : 'No elegiste ninguna cena — ¡probá de nuevo!');
     if (listEl) listEl.appendChild(li);
     return;
   }
@@ -631,7 +660,7 @@ function demoShareWhatsapp(){
     return;
   }
   var lang = demoCurrentLang();
-  var header = lang === 'en' ? '🛒 My shopping list:' : '🛒 Mi lista de compras:';
+  var header = lang === 'en' ? '🛒 My shopping list:' : (lang === 'fr' ? '🛒 Ma liste de courses :' : '🛒 Mi lista de compras:');
   var lines = checked.map(function(c){ return '• ' + c.getAttribute('data-name'); });
   if (bubble) bubble.textContent = header + '\n' + lines.join('\n');
   if (overlay) overlay.classList.add('show');
@@ -655,7 +684,8 @@ function demoRestart(){
 }
 
 function demoSetLang(lang){
-  demoLang = (lang === 'en') ? 'en' : 'es';
+  // FR usa los datos de ejemplo en inglés (no hay DEMO_CENAS.fr todavía)
+  demoLang = (lang === 'es') ? 'es' : 'en';
   demoRestart();
 }
 
@@ -691,5 +721,3 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 </body>
 </html>
-
-
