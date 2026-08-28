@@ -424,6 +424,33 @@ var DEMO_CENAS = {
       ing:[{n:'Salmon fillet',c:'carnes'},{n:'Broccoli',c:'verduras'},{n:'Carrots',c:'verduras'}],
       ingFull:['4 salmon fillets','1 broccoli head','3 carrots','Olive oil','Lemon'],
       pasos:['Cut the broccoli and carrots into even pieces.','Steam for 8 minutes.','Grill the salmon 4 minutes per side with salt and lemon.','Serve the salmon with the vegetables on the side.'] }
+  ],
+  fr: [
+    { tag:'40 min', t:'Escalopes panées au four avec purée mixte', d:'Escalopes de bœuf panées et cuites au four, plus légères que frites, avec une purée de pomme de terre et courge.',
+      note:'Adapté : cuites au four au lieu de frites, pratiques pour toute la semaine sans excès d\'huile.',
+      ing:[{n:'Escalopes de bœuf panées',c:'carnes'},{n:'Pommes de terre',c:'verduras'},{n:'Courge',c:'verduras'}],
+      ingFull:['4 escalopes de bœuf panées','3 pommes de terre moyennes','300 g de courge','1 œuf','Chapelure','Huile en spray'],
+      pasos:['Passer les escalopes dans l\'œuf puis la chapelure.','Cuire au four à 200°C pendant 25 minutes, en retournant à mi-cuisson.','Faire bouillir la pomme de terre et la courge, écraser en purée avec un peu de lait.','Servir les escalopes avec la purée à côté.'] },
+    { tag:'35 min', t:'Tarte blette et ricotta', d:'Tarte à la blette et ricotta sur pâte feuilletée, accompagnée d\'une salade fraîche.',
+      note:'Adapté : ration supplémentaire de ricotta pour ajouter des protéines sans viande.',
+      ing:[{n:'Blette',c:'verduras'},{n:'Ricotta',c:'lacteos'},{n:'Pâte feuilletée',c:'almacen'}],
+      ingFull:['1 pâte feuilletée','1 botte de blette','250 g de ricotta','2 œufs','Sel et noix de muscade'],
+      pasos:['Laver et cuire la blette, bien égoutter.','Mélanger blette, ricotta, œufs et assaisonnements.','Verser sur la pâte dans un moule à tarte et cuire 35 min à 190°C.','Laisser tiédir avant de couper.'] },
+    { tag:'30 min', t:'Poulet au citron avec riz', d:'Blancs de poulet marinés au citron et aux herbes, servis avec du riz blanc.',
+      note:'Adapté : sauce au citron servie à part pour ceux qui préfèrent moins d\'acidité.',
+      ing:[{n:'Blanc de poulet',c:'carnes'},{n:'Citron',c:'verduras'},{n:'Riz',c:'almacen'}],
+      ingFull:['4 blancs de poulet','2 citrons','Ail et herbes','2 tasses de riz','Bouillon de légumes'],
+      pasos:['Mariner le poulet dans le jus de citron, l\'ail et les herbes pendant 15 minutes.','Saisir dans une poêle chaude 5 minutes de chaque côté.','Cuire le riz dans le bouillon de légumes.','Servir le poulet émincé sur le riz.'] },
+    { tag:'45 min', t:'Gnocchis à la sauce tomate', d:'Gnocchis de pomme de terre faits maison avec sauce tomate et basilic frais.',
+      note:'Adapté : sauce sans piment, convient à toute la famille.',
+      ing:[{n:'Gnocchis de pomme de terre',c:'almacen'},{n:'Tomate',c:'verduras'},{n:'Basilic',c:'verduras'}],
+      ingFull:['1 kg de gnocchis de pomme de terre','1 boîte de tomates concassées','1 gousse d\'ail','Basilic frais','Fromage râpé'],
+      pasos:['Porter l\'eau salée à ébullition et cuire les gnocchis jusqu\'à ce qu\'ils remontent à la surface.','Faire revenir l\'ail, ajouter la tomate et cuire 10 minutes.','Incorporer le basilic frais en fin de cuisson.','Mélanger avec les gnocchis et saupoudrer de fromage.'] },
+    { tag:'25 min', t:'Saumon grillé avec légumes', d:'Filet de saumon à la poêle avec brocoli et carottes à la vapeur.',
+      note:'Adapté : portion de saumon plus petite pour les plus jeunes de la famille.',
+      ing:[{n:'Filet de saumon',c:'carnes'},{n:'Brocoli',c:'verduras'},{n:'Carottes',c:'verduras'}],
+      ingFull:['4 filets de saumon','1 brocoli','3 carottes','Huile d\'olive','Citron'],
+      pasos:['Couper le brocoli et les carottes en morceaux réguliers.','Cuire à la vapeur 8 minutes.','Griller le saumon 4 minutes de chaque côté avec sel et citron.','Servir le saumon avec les légumes à côté.'] }
   ]
 };
 var DEMO_CAT_LABEL = {
@@ -444,7 +471,6 @@ function demoRenderStack(){
   if (!stack) return;
   stack.innerHTML = '';
   var dataLang = demoCurrentLang(); // idioma de los datos (es/en)
-  var uiLang   = demoUiLang;        // idioma de la UI (es/en/fr) — para hint y strings
   var cenas = DEMO_CENAS[dataLang];
   var counterNum = document.getElementById('demo-counter-num');
   if (counterNum) counterNum.textContent = demoElegidas.length + ' / ' + cenas.length;
@@ -452,21 +478,21 @@ function demoRenderStack(){
   if (demoIdx >= cenas.length) { demoShowResult(); return; }
 
   if (demoIdx + 1 < cenas.length) {
-    var next = demoBuildCard(cenas[demoIdx+1], lang);
+    var next = demoBuildCard(cenas[demoIdx+1]);
     next.style.transform = 'scale(0.95) translateY(10px)';
     next.style.zIndex = 1;
     stack.appendChild(next);
   }
-  var top = demoBuildCard(cenas[demoIdx], lang);
+  var top = demoBuildCard(cenas[demoIdx]);
   top.style.zIndex = 2;
   stack.appendChild(top);
   demoAttachDrag(top);
 }
 
-function demoBuildCard(cena, lang){
+function demoBuildCard(cena){
   var card = document.createElement('div');
   card.className = 'demo-card';
-  var hint = uiLang === 'en' ? 'swipe to dismiss &rarr;' : (uiLang === 'fr' ? 'glisse pour ignorer &rarr;' : '&larr; deslizá para descartar');
+  var hint = demoUiLang === 'en' ? 'swipe to dismiss &rarr;' : (demoUiLang === 'fr' ? 'glisse pour ignorer &rarr;' : '&larr; deslizá para descartar');
   card.innerHTML =
     '<div class="demo-check">&#10003;</div>' +
     '<div class="demo-card-title">' + cena.t + '</div>' +
@@ -690,8 +716,8 @@ function demoRestart(){
 }
 
 function demoSetLang(lang){
-  demoUiLang = lang;                        // idioma de la UI (fr/en/es)
-  demoLang = (lang === 'es') ? 'es' : 'en'; // idioma de los datos (FR usa EN)
+  demoUiLang = lang;    // idioma de la UI (fr/en/es)
+  demoLang   = lang;    // v32: FR tiene DEMO_CENAS.fr propio, ya no cae a 'en'
   demoRestart();
 }
 
