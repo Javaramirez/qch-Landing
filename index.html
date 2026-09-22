@@ -197,6 +197,64 @@ footer a:hover { color: white; }
 .faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease; padding: 0 24px; }
 .faq-item.active .faq-answer { max-height: 200px; opacity: 1; padding: 0 24px 20px; }
 .faq-answer p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+/* ── Modal trial ── */
+.modal-trial-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(28,24,18,0.5); backdrop-filter: blur(4px);
+  z-index: 300; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-trial-overlay.open { display: flex; }
+.modal-trial {
+  background: var(--warm-white); border-radius: 24px; padding: 32px 28px 28px;
+  max-width: 400px; width: 100%; position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: popIn 0.25s ease;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-trial-close {
+  position: absolute; top: 16px; right: 16px; background: none; border: none;
+  cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1;
+  padding: 4px; border-radius: 50%; transition: color 0.15s;
+}
+.modal-trial-close:hover { color: var(--ink); }
+.modal-trial-titulo {
+  font-family: "Playfair Display", serif; font-size: 22px; font-weight: 700;
+  color: var(--ink); margin-bottom: 20px; line-height: 1.2;
+}
+.modal-trial-titulo em { color: var(--terracotta); font-style: italic; }
+.trial-fila {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.trial-fila:last-of-type { border-bottom: none; }
+.trial-badge {
+  min-width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.badge-completo { background: var(--olive-light); }
+.badge-basico   { background: var(--terra-light); }
+.badge-fin      { background: #EEEBE6; }
+.trial-semana {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+}
+.trial-titulo { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.trial-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.modal-trial-cta {
+  margin-top: 22px; display: block; width: 100%;
+  background: var(--terracotta); color: white;
+  font-family: "DM Sans", sans-serif; font-size: 15px; font-weight: 600;
+  padding: 14px; border-radius: 50px; text-align: center;
+  text-decoration: none; transition: background 0.2s;
+}
+.modal-trial-cta:hover { background: var(--terra-dark); }
+.modal-trial-nota { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.hero-note a { color: var(--olive); font-weight: 600; text-decoration: underline; text-decoration-style: dotted; cursor: pointer; }
+.hero-note a:hover { color: var(--terracotta); }
 </style>
 </head>
 <body>
@@ -485,7 +543,15 @@ var LANG={
   es:{
     heroTitle:'¿Qué hay para<br><em>comer?</em>',
     heroSubtitle:'Planificá las cenas de tu familia para toda la semana en segundos. Con inteligencia artificial, sin repetirte.',
-    heroCta:'📲 Probalo gratis',heroNote:'Sin descargar nada · <strong>4 semanas gratis</strong> · sin tarjeta de crédito',
+    heroCta:'📲 Probalo gratis',heroNote:'Sin tarjeta · <a onclick="document.getElementById(\'modal-trial\').classList.add(\'open\')">¿Qué incluye el plan gratis?</a> · sin descargar nada',
+    trialModalTitulo:'¿Qué incluye el<br><em>plan gratis?</em>',
+    trialSem1Label:'Semana 1',trialSem1Titulo:'Todo incluido',
+    trialSem1Desc:'Menú semanal personalizado, recetas completas paso a paso y lista de compras automática.',
+    trialSem2Label:'Semanas 2, 3 y 4',trialSem2Titulo:'Solo el menú',
+    trialSem2Desc:'Seguís recibiendo sugerencias de cenas cada semana, sin las recetas ni la lista de compras.',
+    trialSem3Label:'Desde la semana 5',trialSem3Titulo:'Plan Familiar',
+    trialSem3Desc:'$9.435/mes para planificar sin límites, con recetas y lista de compras siempre.',
+    trialModalCta:'Empezar gratis →',trialModalNota:'Sin tarjeta de crédito · sin descargar nada',
     scrollHint:'Deslizá para ver más',
     proofPwa:'<strong>App web instalable</strong> · sin App Store',proofAr:'<strong>Hecho en Argentina</strong>',
     proofAi:'<strong>Powered by Claude AI</strong>',proofFree:'<strong>1ª semana completa</strong> gratis para empezar',
@@ -534,7 +600,15 @@ var LANG={
   en:{
     heroTitle:'What\'s for<br><em>Dinner?</em>',
     heroSubtitle:'Plan your family\'s dinners for the whole week in seconds. Powered by AI, never repeating.',
-    heroCta:'📲 Try it free',heroNote:'No downloads · <strong>4 free weeks</strong> · no credit card required',
+    heroCta:'📲 Try it free',heroNote:'No credit card · <a onclick="document.getElementById(\'modal-trial\').classList.add(\'open\')">What\'s included in the free plan?</a> · no downloads',
+    trialModalTitulo:'What\'s included in the<br><em>free plan?</em>',
+    trialSem1Label:'Week 1',trialSem1Titulo:'Everything included',
+    trialSem1Desc:'Personalized weekly menu, full step-by-step recipes and automatic shopping list.',
+    trialSem2Label:'Weeks 2, 3 and 4',trialSem2Titulo:'Menu only',
+    trialSem2Desc:'You keep getting dinner suggestions every week, without the recipes or shopping list.',
+    trialSem3Label:'From week 5',trialSem3Titulo:'Family Plan',
+    trialSem3Desc:'USD 6.99/month to plan without limits, with recipes and shopping list always included.',
+    trialModalCta:'Get started free →',trialModalNota:'No credit card · no downloads',
     scrollHint:'Scroll to learn more',
     proofPwa:'<strong>Installable Web App</strong> · no App Store',proofAr:'<strong>Made in Argentina</strong>',
     proofAi:'<strong>Powered by Claude AI</strong>',proofFree:'<strong>1st week full access</strong> free to start',
@@ -582,7 +656,15 @@ var LANG={
   fr:{
     heroTitle:'Qu\'est-ce qu\'on mange<br><em>ce soir ?</em>',
     heroSubtitle:'Planifie les dîners de ta famille pour toute la semaine en quelques secondes. Avec l\'intelligence artificielle, sans jamais te répéter.',
-    heroCta:'📲 Essayer gratuitement',heroNote:'Sans téléchargement · <strong>4 semaines gratuites</strong> · sans carte bancaire',
+    heroCta:'📲 Essayer gratuitement',heroNote:'Sans carte bancaire · <a onclick="document.getElementById(\'modal-trial\').classList.add(\'open\')">Qu\'est-ce qu\'inclut le plan gratuit ?</a> · sans téléchargement',
+    trialModalTitulo:'Qu\'est-ce qu\'inclut le<br><em>plan gratuit ?</em>',
+    trialSem1Label:'Semaine 1',trialSem1Titulo:'Tout inclus',
+    trialSem1Desc:'Menu hebdomadaire personnalisé, recettes complètes étape par étape et liste de courses automatique.',
+    trialSem2Label:'Semaines 2, 3 et 4',trialSem2Titulo:'Menu seulement',
+    trialSem2Desc:'Tu continues à recevoir des suggestions de dîners chaque semaine, sans les recettes ni la liste de courses.',
+    trialSem3Label:'À partir de la semaine 5',trialSem3Titulo:'Plan Famille',
+    trialSem3Desc:'6,99 USD/mois pour planifier sans limites, avec recettes et liste de courses toujours incluses.',
+    trialModalCta:'Commencer gratuitement →',trialModalNota:'Sans carte bancaire · sans téléchargement',
     scrollHint:'Fais défiler pour en savoir plus',
     proofPwa:'<strong>App web installable</strong> · sans App Store',proofAr:'<strong>Fait en Argentine</strong>',
     proofAi:'<strong>Propulsé par Claude AI</strong>',proofFree:'<strong>1ère semaine complète</strong> gratuite pour commencer',
@@ -656,5 +738,39 @@ document.querySelectorAll('.step').forEach(function(el){observer.observe(el);});
   setLang(urlParam && LANG[urlParam] ? urlParam : (stored && LANG[stored] ? stored : detected));
 })();
 </script>
+<!-- Modal trial -->
+<div class="modal-trial-overlay" id="modal-trial" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-trial">
+    <button class="modal-trial-close" onclick="document.getElementById('modal-trial').classList.remove('open')">✕</button>
+    <h2 class="modal-trial-titulo" data-i18n="trialModalTitulo">¿Qué incluye el<br><em>plan gratis?</em></h2>
+    <div class="trial-fila">
+      <div class="trial-badge badge-completo">✨</div>
+      <div>
+        <div class="trial-semana" data-i18n="trialSem1Label">Semana 1</div>
+        <div class="trial-titulo" data-i18n="trialSem1Titulo">Todo incluido</div>
+        <div class="trial-desc" data-i18n="trialSem1Desc">Menú semanal personalizado, recetas completas paso a paso y lista de compras automática.</div>
+      </div>
+    </div>
+    <div class="trial-fila">
+      <div class="trial-badge badge-basico">📋</div>
+      <div>
+        <div class="trial-semana" data-i18n="trialSem2Label">Semanas 2, 3 y 4</div>
+        <div class="trial-titulo" data-i18n="trialSem2Titulo">Solo el menú</div>
+        <div class="trial-desc" data-i18n="trialSem2Desc">Seguís recibiendo sugerencias de cenas cada semana, sin las recetas ni la lista de compras.</div>
+      </div>
+    </div>
+    <div class="trial-fila">
+      <div class="trial-badge badge-fin">🔒</div>
+      <div>
+        <div class="trial-semana" data-i18n="trialSem3Label">Desde la semana 5</div>
+        <div class="trial-titulo" data-i18n="trialSem3Titulo">Plan Familiar</div>
+        <div class="trial-desc" data-i18n="trialSem3Desc">$9.435/mes para planificar sin límites, con recetas y lista de compras siempre.</div>
+      </div>
+    </div>
+    <a href="https://app.qch.com.ar" class="modal-trial-cta" data-i18n="trialModalCta">Empezar gratis →</a>
+    <p class="modal-trial-nota" data-i18n="trialModalNota">Sin tarjeta de crédito · sin descargar nada</p>
+  </div>
+</div>
+
 </body>
 </html>
