@@ -195,7 +195,7 @@ footer a:hover { color: white; }
 .faq-icon { font-size: 18px; font-weight: 400; color: var(--terracotta); transition: transform 0.3s; flex-shrink: 0; }
 .faq-item.active .faq-icon { transform: rotate(45deg); }
 .faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease; padding: 0 24px; }
-.faq-item.active .faq-answer { max-height: 200px; opacity: 1; padding: 0 24px 20px; }
+.faq-item.active .faq-answer { max-height: 260px; opacity: 1; padding: 0 24px 20px; }
 .faq-answer p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 /* ── Modal trial ── */
 .modal-trial-overlay {
@@ -457,7 +457,7 @@ footer a:hover { color: white; }
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">
-        <p data-i18n="faqA4">Tenés 3 semanas completas con todas las funciones activas (recetas paso a paso y lista de compras sin restricciones), sin ingresar tarjeta de crédito ni compromisos.</p>
+        <p data-i18n="faqA4">La primera semana tenés todo: menú personalizado, recetas y lista de compras. Las semanas 2, 3 y 4 solo el menú. Sin tarjeta.</p>
       </div>
     </div>
   </div>
@@ -583,7 +583,7 @@ var LANG={
     faqQ1:'¿Cómo instalo la app en mi celular?',faqA1:'Entrás a app.qch.com.ar desde tu navegador (Chrome o Safari) y tocás en "Agregar a la pantalla de inicio" o "Instalar app". Funciona igual que una app descargada pero sin ocupar espacio de la tienda.',
     faqQ2:'¿Sirve para dietas especiales o restricciones alimentarias?',faqA2:'¡Sí! Al configurar tu perfil familiar podés especificar si hay integrantes celíacos, vegetarianos, intolerantes a la lactosa o ingredientes que no les gusten. La IA adaptará todas las sugerencias.',
     faqQ3:'¿Puedo usar la misma cuenta con mi pareja o familia?',faqA3:'Totalmente. Podés iniciar sesión con la misma cuenta en varios celulares para que cualquiera en casa vea el menú o la lista de compras en el súper.',
-    faqQ4:'¿Cómo funciona la prueba gratuita?',faqA4:'Al registrarte tenés <strong>1 semana completa gratis</strong> con todas las funciones activas (sugerencias, recetas paso a paso y lista de compras), más 2 usos gratis del modo improvisación. ¡Y si tenés un código de un amigo, recibís 3 semanas completas gratis!',
+    faqQ4:'¿Cómo funciona la prueba gratuita?',faqA4:'La primera semana tenés todo: menú personalizado, recetas paso a paso y lista de compras. Las semanas 2, 3 y 4 seguís recibiendo sugerencias de cenas, sin recetas ni lista. Sin tarjeta de crédito. <a style="color:var(--terracotta);font-weight:600;cursor:pointer" onclick="document.getElementById(\'modal-trial\').classList.add(\'open\')">Ver semana por semana →</a>',
     pricingLabel:'Planes',pricingTitle:'Simple y <em>transparente</em>',
     plan1name:'Gratis',plan1period:'1ª semana completa gratis',
     plan1f1:'1ª semana con recetas completas y compras',plan1f2:'Sin tarjeta de crédito para empezar',plan1f3:'2 usos gratis de "¿Qué tengo en casa?"',
@@ -639,7 +639,7 @@ var LANG={
     faqQ1:'How do I install the app on my phone?',faqA1:'Open app.qch.com.ar in your browser (Chrome or Safari) and tap "Add to Home Screen" or "Install App". It works just like a native app without taking store space.',
     faqQ2:'Does it support special diets or restrictions?',faqA2:'Yes! When setting up your family profile, you can specify gluten-free, vegetarian, lactose-intolerant, or disliked ingredients. The AI customizes all meal plans accordingly.',
     faqQ3:'Can I share my account with my partner?',faqA3:'Absolutely. You can log into the same account across multiple phones so anyone at home can view the menu or check the grocery list.',
-    faqQ4:'How does the free trial work?',faqA4:'When you sign up you get <strong>1 full week free</strong> with all features unlocked: suggestions, step-by-step recipes, and shopping list, plus 2 free uses of "What\'s in my fridge?". Plus, if you have a friend invite code, you get 3 full weeks free!',
+    faqQ4:'How does the free trial work?',faqA4:'The first week you get everything: personalized menu, step-by-step recipes and shopping list. Weeks 2, 3 and 4 you keep getting dinner suggestions, without recipes or shopping list. No credit card. <a style="color:var(--terracotta);font-weight:600;cursor:pointer" onclick="document.getElementById(\'modal-trial\').classList.add(\'open\')">See week by week →</a>',
     pricingLabel:'Pricing',pricingTitle:'Simple and <em>transparent</em>',
     plan1name:'Free',plan1period:'1st week full access free',
     plan1f1:'1st week with full recipes & shopping list',plan1f2:'No credit card required to start',plan1f3:'2 free uses of "What\'s in my fridge?"',
@@ -696,7 +696,7 @@ var LANG={
     faqQ1:'Comment installer l\'app sur mon téléphone ?',faqA1:'Ouvre app.qch.com.ar dans ton navigateur (Chrome ou Safari) et appuie sur « Ajouter à l\'écran d\'accueil » ou « Installer l\'app ». Ça fonctionne comme une app native sans prendre de place dans le store.',
     faqQ2:'Est-ce que ça prend en charge les régimes spéciaux ou les restrictions ?',faqA2:'Oui ! En configurant ton profil familial, tu peux spécifier les membres sans gluten, végétariens, intolérants au lactose ou les ingrédients qu\'ils n\'aiment pas. L\'IA adaptera toutes les suggestions.',
     faqQ3:'Puis-je partager mon compte avec mon partenaire ?',faqA3:'Tout à fait. Tu peux te connecter avec le même compte sur plusieurs téléphones pour que n\'importe qui à la maison puisse voir le menu ou vérifier la liste de courses.',
-    faqQ4:'Comment fonctionne l\'essai gratuit ?',faqA4:'À l\'inscription tu bénéficies d\'<strong>1 semaine complète gratuite</strong> avec toutes les fonctions actives : suggestions, recettes étape par étape et liste de courses, plus 2 utilisations gratuites de « Qu\'est-ce que j\'ai dans le frigo ? ». Et si tu as un code d\'invitation d\'un ami, tu reçois 3 semaines complètes gratuites !',
+    faqQ4:'Comment fonctionne l\'essai gratuit ?',faqA4:'La première semaine tu as tout : menu personnalisé, recettes étape par étape et liste de courses. Les semaines 2, 3 et 4 tu continues à recevoir des suggestions de dîners, sans recettes ni liste. Sans carte bancaire. <a style=\"color:var(--terracotta);font-weight:600;cursor:pointer\" onclick=\"document.getElementById(\'modal-trial\').classList.add(\'open\')\" >Voir semaine par semaine →</a>',
     pricingLabel:'Tarifs',pricingTitle:'Simple et <em>transparent</em>',
     plan1name:'Gratuit',plan1period:'1ère semaine complète gratuite',
     plan1f1:'1ère semaine avec recettes complètes et liste de courses',plan1f2:'Sans carte de crédit pour commencer',plan1f3:'2 utilisations gratuites de « Qu\'est-ce que j\'ai dans le frigo ? »',
